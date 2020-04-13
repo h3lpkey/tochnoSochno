@@ -46,9 +46,10 @@ class ProductController extends Controller
     $product->description = $request->description;
     $product->gramms = $request->gramms;
     $product->price = $request->price;
-
-    $path = $request->src->store($request->name);
-    $product->src = $path;
+    if (isset($request->src)) {
+      $path = $request->src->store($request->name);
+      $product->src = $path;
+    }
 
     $product->update();
 
