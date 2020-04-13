@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddressTable extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
-            $table->id();
-            $table->string('address_short', 100);
-            $table->text('address_long');
-            $table->text('time_work');
-            $table->timestamps();
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateAddressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address');
+        Schema::dropIfExists('password_resets');
     }
 }
