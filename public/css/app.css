@@ -1,3 +1,195 @@
+/**
+ * Owl Carousel v2.3.4
+ * Copyright 2013-2018 David Deutsch
+ * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+ */
+/*
+ *  Owl Carousel - Core
+ */
+.owl-carousel {
+  display: none;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* position relative and z-index fix webkit rendering fonts issue */
+  position: relative;
+  z-index: 1; }
+  .owl-carousel .owl-stage {
+    position: relative;
+    touch-action: manipulation;
+    -moz-backface-visibility: hidden;
+    /* fix firefox animation glitch */ }
+  .owl-carousel .owl-stage:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0; }
+  .owl-carousel .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    /* fix for flashing background */
+    -webkit-transform: translate3d(0px, 0px, 0px); }
+  .owl-carousel .owl-wrapper,
+  .owl-carousel .owl-item {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0); }
+  .owl-carousel .owl-item {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none; }
+  .owl-carousel .owl-item img {
+    display: block;
+    width: 100%; }
+  .owl-carousel .owl-nav.disabled,
+  .owl-carousel .owl-dots.disabled {
+    display: none; }
+  .owl-carousel .owl-nav .owl-prev,
+  .owl-carousel .owl-nav .owl-next,
+  .owl-carousel .owl-dot {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .owl-carousel .owl-nav button.owl-prev,
+  .owl-carousel .owl-nav button.owl-next,
+  .owl-carousel button.owl-dot {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0 !important;
+    font: inherit; }
+  .owl-carousel.owl-loaded {
+    display: block; }
+  .owl-carousel.owl-loading {
+    opacity: 0;
+    display: block; }
+  .owl-carousel.owl-hidden {
+    opacity: 0; }
+  .owl-carousel.owl-refresh .owl-item {
+    visibility: hidden; }
+  .owl-carousel.owl-drag .owl-item {
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .owl-carousel.owl-grab {
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: grab; }
+  .owl-carousel.owl-rtl {
+    direction: rtl; }
+  .owl-carousel.owl-rtl .owl-item {
+    float: right; }
+
+/* No Js */
+.no-js .owl-carousel {
+  display: block; }
+
+/*
+ *  Owl Carousel - Animate Plugin
+ */
+.owl-carousel .animated {
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both; }
+
+.owl-carousel .owl-animated-in {
+  z-index: 0; }
+
+.owl-carousel .owl-animated-out {
+  z-index: 1; }
+
+.owl-carousel .fadeOut {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut; }
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+/*
+ * 	Owl Carousel - Auto Height Plugin
+ */
+.owl-height {
+  transition: height 500ms ease-in-out; }
+
+/*
+ * 	Owl Carousel - Lazy Load Plugin
+ */
+.owl-carousel .owl-item {
+  /**
+			This is introduced due to a bug in IE11 where lazy loading combined with autoheight plugin causes a wrong
+			calculation of the height of the owl-item that breaks page layouts
+		 */ }
+  .owl-carousel .owl-item .owl-lazy {
+    opacity: 0;
+    transition: opacity 400ms ease; }
+  .owl-carousel .owl-item .owl-lazy[src^=""], .owl-carousel .owl-item .owl-lazy:not([src]) {
+    max-height: 0; }
+  .owl-carousel .owl-item img.owl-lazy {
+    transform-style: preserve-3d; }
+
+/*
+ * 	Owl Carousel - Video Plugin
+ */
+.owl-carousel .owl-video-wrapper {
+  position: relative;
+  height: 100%;
+  background: #000; }
+
+.owl-carousel .owl-video-play-icon {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+  background: url(/images/vendor/owl.carousel/dist/owl.video.play.png?4a37f8008959c75f619bf0a3a4e2d7a2) no-repeat;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  transition: transform 100ms ease; }
+
+.owl-carousel .owl-video-play-icon:hover {
+  transform: scale(1.3, 1.3); }
+
+.owl-carousel .owl-video-playing .owl-video-tn,
+.owl-carousel .owl-video-playing .owl-video-play-icon {
+  display: none; }
+
+.owl-carousel .owl-video-tn {
+  opacity: 0;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity 400ms ease; }
+
+.owl-carousel .owl-video-frame {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%; }
 /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
 
 /* Document
@@ -535,6 +727,10 @@ a {
   text-decoration: none;
 }
 
+#app {
+  transition: 0.5s;
+}
+
 .btn-wrapper {
   position: relative;
   padding: 3px;
@@ -586,6 +782,19 @@ a {
   max-width: 1100px;
   width: 100%;
   margin: auto;
+  overflow: hidden;
+}
+
+@media (max-width: 1000px) {
+  .section .wrapper {
+    margin: 0 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section .wrapper {
+    margin: 0 20px;
+  }
 }
 
 .section-head {
@@ -601,6 +810,12 @@ a {
   justify-content: space-between;
   align-items: center;
   margin-top: 50px;
+  transition: 0.5s;
+}
+
+.section-head .header .menu-btn {
+  cursor: pointer;
+  margin: 20px;
 }
 
 .section-head .header .logo {
@@ -628,6 +843,10 @@ a {
   color: #ff0000;
 }
 
+.section-head .header .phone {
+  width: 250px;
+}
+
 .section-head .header .phone a {
   color: white;
   font-size: 28px;
@@ -638,6 +857,56 @@ a {
   color: #ff0000;
 }
 
+.section-head .header .phone-mobile {
+  width: 70px;
+  height: 70px;
+  background-image: url(/images/phone.svg?05462a9fcb459dc0b49960b40d1f133f);
+  background-repeat: no-repeat;
+  margin: 5px;
+}
+
+.section-head .header .phone-mobile a {
+  color: transparent;
+}
+
+.section-head .header .phone-mobile a:hover {
+  color: transparent;
+}
+
+.section-head .header .instagram {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  margin: 0;
+  align-items: center;
+}
+
+.section-head .header .instagram img {
+  width: 25px;
+  height: 25px;
+  margin-right: 16px;
+}
+
+.section-head .header-reaplcer {
+  height: 100px;
+  background-color: red;
+}
+
+.section-head .header-fixed {
+  position: fixed;
+  width: 100%;
+  background: #060606;
+  left: 0;
+  top: 0;
+  margin: 0;
+  z-index: 100;
+  padding: 20px 0;
+  opacity: 0.88;
+  padding: 0;
+}
+
 .section-head .big-logo {
   display: flex;
   justify-content: center;
@@ -645,6 +914,12 @@ a {
   margin: auto;
   margin-top: 150px;
   margin-bottom: 90px;
+}
+
+@media (max-width: 600px) {
+  .section-head .big-logo {
+    width: 270px;
+  }
 }
 
 .section-head .big-logo img {
@@ -677,10 +952,22 @@ a {
   margin-bottom: 50px;
 }
 
+@media (max-width: 600px) {
+  .section-head .bottom-buttons {
+    justify-content: center;
+  }
+}
+
 .section-head .bottom-buttons .city {
   display: flex;
   flex-direction: row;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .section-head .bottom-buttons .city {
+    display: none;
+  }
 }
 
 .section-head .bottom-buttons .city img {
@@ -692,6 +979,12 @@ a {
   flex-direction: row;
   cursor: pointer;
   color: white;
+}
+
+@media (max-width: 600px) {
+  .section-head .bottom-buttons .instagram {
+    display: none;
+  }
 }
 
 .section-head .bottom-buttons .instagram img {
@@ -709,6 +1002,14 @@ a {
   justify-content: space-between;
   margin: 85px 0;
   padding: 0;
+  min-width: 500px;
+}
+
+@media (max-width: 800px) {
+  .section-highlight .list {
+    margin: 35px 0;
+    overflow-x: scroll;
+  }
 }
 
 .section-highlight .list .list-item {
@@ -716,6 +1017,20 @@ a {
   font-size: 24px;
   text-align: center;
   max-width: 170px;
+  min-width: 125px;
+}
+
+@media (max-width: 600px) {
+  .section-highlight .list .list-item {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-highlight .list .list-item .list-item_text {
+    width: 80px;
+    margin: auto;
+  }
 }
 
 .section-highlight .list .list-item .list-item_img {
@@ -731,6 +1046,13 @@ a {
   font-size: 96px;
 }
 
+@media (max-width: 600px) {
+  .section-menu .title {
+    font-size: 48px;
+    text-align: center;
+  }
+}
+
 .section-menu .text {
   color: white;
   font-size: 28px;
@@ -738,10 +1060,24 @@ a {
   margin: 0;
 }
 
+@media (max-width: 600px) {
+  .section-menu .text {
+    display: none;
+  }
+}
+
 .section-menu .menu-select {
   display: flex;
   flex-wrap: wrap;
   margin-top: 75px;
+}
+
+@media (max-width: 600px) {
+  .section-menu .menu-select {
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .section-menu .menu-select .item {
@@ -753,6 +1089,14 @@ a {
   justify-content: center;
   font-size: 36px;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .section-menu .menu-select .item {
+    width: 110px;
+    height: 50px;
+    font-size: 16px;
+  }
 }
 
 .section-menu .menu-select .item:hover {
@@ -780,12 +1124,18 @@ a {
   margin-bottom: 65px;
 }
 
+@media (max-width: 600px) {
+  .section-menu .menu-text {
+    display: none;
+  }
+}
+
 .section-menu .menu-wrapper {
   display: flex;
   justify-content: space-between;
   width: 100%;
   position: relative;
-  height: 450px;
+  height: 500px;
 }
 
 .section-menu .menu-wrapper .menu-background {
@@ -833,6 +1183,10 @@ a {
   margin: 0 30px 30px;
 }
 
+.section-menu .menu-wrapper .owl-stage-outer {
+  z-index: 2;
+}
+
 .section-menu .menu-wrapper .owl-nav {
   position: absolute;
   top: 0;
@@ -840,6 +1194,7 @@ a {
   width: 100%;
   height: 100%;
   margin: 0;
+  z-index: 1;
 }
 
 .section-menu .menu-wrapper .owl-nav .owl-prev {
@@ -893,8 +1248,8 @@ a {
 
 .section-menu .btn-wrapper {
   width: 350px;
-  margin-top: 100px;
-  margin-bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .section-deliver {
@@ -912,6 +1267,12 @@ a {
   font-size: 96px;
   color: white;
   margin: 10px 0;
+}
+
+@media (max-width: 600px) {
+  .section-deliver .deliver-wrapper .title {
+    font-size: 48px;
+  }
 }
 
 .section-deliver .deliver-wrapper .text {
@@ -947,6 +1308,12 @@ a {
   text-align: center;
 }
 
+@media (max-width: 600px) {
+  .section-foodtrack .foodtrack-wrapper .title {
+    font-size: 48px;
+  }
+}
+
 .section-foodtrack .foodtrack-wrapper .text {
   font-size: 28px;
   text-align: center;
@@ -971,6 +1338,12 @@ a {
 .section-cashback .title {
   font-size: 96px;
   color: white;
+}
+
+@media (max-width: 600px) {
+  .section-cashback .title {
+    font-size: 48px;
+  }
 }
 
 .section-cashback .cashback-wrapper-list {
@@ -1060,7 +1433,7 @@ a {
   right: 0;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .section-cashback .img-wrapper {
     display: none;
   }
@@ -1070,6 +1443,12 @@ a {
   font-size: 96px;
   color: white;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .section-contacts .title {
+    font-size: 48px;
+  }
 }
 
 .section-contacts .contact-wrapper {
@@ -1158,7 +1537,7 @@ a {
   height: 100%;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .section-contacts .map-wrapper {
     display: none;
   }

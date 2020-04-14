@@ -12,18 +12,26 @@
   <div id="app">
     <section class="section section-head" id="section-head">
       <div class="wrapper">
-        <div class="header">
-          <div class="logo">
-            <img src="images/logo-cirlce.svg" alt="logo" />
+        <div class="header-reaplcer"></div>
+        <div class="header" v-scroll="handleScroll">
+          <div class="menu-btn">
+            <img src="images/menu.svg" alt="">
           </div>
-          <nav class="menu">
+          <!-- <div class="logo">
+            <img src="images/logo-cirlce.svg" alt="logo" />
+          </div> -->
+          <!-- <nav class="menu">
             <a href="#section-menu">меню</a>
             <a href="#section-deliver">доставка</a>
             <a href="#section-foodtrack">фудтрак</a>
             <a href="#section-cashback">кэшбек</a>
             <a href="#section-contacts">контакты</a>
-          </nav>
-          <div class="phone">
+          </nav> -->
+          <a href="#" class="instagram">
+            <img src="images/instagram.svg" alt="" />
+            <p>instagram</p>
+          </a>
+          <div class="phone phone-mobile">
             <a href="tel:+73432195888">+7 (343) 219-58-88</a>
           </div>
         </div>
@@ -83,7 +91,7 @@
         <p class="menu-text">
           Подается в лаваше, в пшеничной лепешке или в открытом виде
         </p>
-        <carousel class="menu-wrapper" :dots="false" v-for="(menu, index) in menus" v-show="menu.name === selectedType">
+        <div class="menu-wrapper owl-carousel owl-theme" :dots="false" v-for="(menu, index) in menus" v-show="menu.name === selectedType">
           <div class="menu-background" v-for="(item, index) in menu.recipies" :key="item.name">
             <div class="menu-item">
               <img class="menu-item-img" :src="item.image" :alt="item.title" />
@@ -93,7 +101,7 @@
               <p class="menu-item-price">@{{item.price}}</p>
             </div>
           </div>
-        </carousel>
+        </div>
         <div class="btn-wrapper btn-wrapper__alw">
           <button>перейти к заказу</button>
         </div>
@@ -127,11 +135,11 @@
             любом месте и в любое время
           </p>
           <div class="foodtrack-inputs">
-            <input class="input" type="text" placeholder="Ваше имя" />
-            <input class="input" type="text" placeholder="Тема мероприятия" />
-            <input class="input" type="text" placeholder="Email" />
-            <input class="input" type="text" placeholder="Телефон" />
-            <div class="btn-wrapper btn-wrapper__alw">
+            <input class="input" type="text" v-model="emailName" placeholder="Ваше имя" />
+            <input class="input" type="text" v-model="emailSubject" placeholder="Тема мероприятия" />
+            <input class="input" type="text" v-model="emailEmail" placeholder="Email" />
+            <input class="input" type="text" v-model="emailPhone" placeholder="Телефон" />
+            <div class="btn-wrapper btn-wrapper__alw" @click="sendEmail">
               <button>отправить заявку</button>
             </div>
           </div>

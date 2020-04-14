@@ -1,9 +1,18 @@
 import "./bootstrap";
-import carousel from "vue-owl-carousel2";
+import "owl.carousel";
 
 window.Vue = require("vue");
 
 const menu = [
+  {
+    image: "images/menu1.jpg",
+    title: "кукаб",
+    type: "кукаб",
+    text:
+      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
+    weight: "130/100/100/80 гр",
+    price: "210 РУБ",
+  },
   {
     image: "images/menu1.jpg",
     title: "шашлык",
@@ -87,9 +96,19 @@ const menu = [
   },
 ];
 
+Vue.directive("scroll", {
+  inserted: function (el, binding) {
+    let f = function (evt) {
+      if (binding.value(evt, el)) {
+        window.removeEventListener("scroll", f);
+      }
+    };
+    window.addEventListener("scroll", f);
+  },
+});
+
 const app = new Vue({
   el: "#app",
-  components: { carousel },
   data: {
     showAddressBox: false,
     currentAddress: "ленина, 40",
@@ -97,6 +116,11 @@ const app = new Vue({
     selectedType: "шашлык",
     types: [],
     menus: [],
+    showMenu: false,
+    emailName: "",
+    emailSubject: "",
+    emailEmail: "",
+    emailPhone: "",
   },
   created: function () {
     // get types menuF
@@ -120,6 +144,28 @@ const app = new Vue({
       this.menus.push(menu);
     });
   },
+  mounted() {
+    setTimeout(() => {
+      $(".owl-carousel").owlCarousel({
+        items: 4,
+        margin: 10,
+        dots: false,
+        autoplayHoverPause: true,
+        responsiveClass: true,
+        stagePadding: 50,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false,
+          },
+          600: {
+            items: 3,
+            nav: true,
+          },
+        },
+      });
+    });
+  },
   methods: {
     setAddress(address) {
       this.currentAddress = address;
@@ -127,6 +173,35 @@ const app = new Vue({
     },
     filterMenu() {
       return this.menu.filter((item) => item.type === this.selectedType);
+    },
+    handleScroll: function (evt, el) {
+      if (window.scrollY > 500) {
+        el.classList.add("header-fixed");
+      } else {
+        el.classList.remove("header-fixed");
+      }
+      return false;
+    },
+    sendEmail() {
+      const formData = new FormData();
+      formData.append("name", this.emailName);
+      formData.append("subject", this.emailSubject);
+      formData.append("email", this.emailEmail);
+      formData.append("phone", this.emailPhone);
+      axios({
+        method: "post",
+        url: "myurl",
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+        .then(function (response) {
+          //handle success
+          console.log(response);
+        })
+        .catch(function (response) {
+          //handle error
+          console.log(response);
+        });
     },
   },
 });

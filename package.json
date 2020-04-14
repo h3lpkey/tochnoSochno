@@ -13,7 +13,7 @@
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
-        "jquery": "^3.2",
+        "jquery": "^3.5.0",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
         "popper.js": "^1.12",
@@ -30,9 +30,9 @@
         "css-loader": "^3.5.1",
         "node-sass": "^4.9.1",
         "normalize-scss": "^7.0.1",
+        "owl.carousel": "^2.3.4",
         "vue": "^2.6.11",
         "vue-loader": "^15.9.1",
-        "vue-owl-carousel": "^2.0.3",
-        "vue-owl-carousel2": "^2.0.7"
+        "vue-owl-carousel": "^2.0.3"
     }
 }
