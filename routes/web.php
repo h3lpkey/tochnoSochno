@@ -8,6 +8,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/getProducts', 'HomeController@getProducts')->name('getProducts');
+Route::get('/getAddresses', 'HomeController@getAddresses')->name('getAddresses');
+
 //Админка
 Route::group(['middleware' => 'admin'], function(){
     Route::get('/home', 'HomeController@index')->name('home');
