@@ -13,12 +13,20 @@
               @csrf
               @if(isset($product)) @method('PATCH') @endif
               <div class="form-group">
-                <label for="exampleFormControlInput1">Название</label>
+                <label for="exampleFormControlInput1">Название (уникальное)</label>
                 <input type="text" class="form-control" name="name" @if(isset($product)) value="{{$product->name}}" @else value="{{old('name')}}" @endif>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Название (будет отображено на сайте)</label>
+                <input type="text" class="form-control" name="public_name" @if(isset($product)) value="{{$product->public_name}}" @else value="{{old('public_name')}}" @endif>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput1">Описание</label>
                 <input type="text" class="form-control" name="description" @if(isset($product)) value="{{$product->description}}" @else value="{{old('description')}}" @endif>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Описание под меню, над блюдами</label>
+                <input type="text" class="form-control" name="description_type" @if(isset($product)) value="{{$product->description_type}}" @else value="{{old('description_type')}}" @endif>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput1">Тип в меню</label>

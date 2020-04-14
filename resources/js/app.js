@@ -3,99 +3,6 @@ import "owl.carousel";
 
 window.Vue = require("vue");
 
-const menu = [
-  {
-    image: "images/menu1.jpg",
-    title: "шаурма",
-    type: "шаурма",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "шашлык",
-    type: "шашлык",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "шашлык",
-    type: "шашлык",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "шашлык",
-    type: "шашлык",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "шашлык",
-    type: "шашлык",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "bbq",
-    type: "bbq",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "bbq",
-    type: "bbq",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "бургеры",
-    type: "бургеры",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "бургеры",
-    type: "бургеры",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "бургеры",
-    type: "бургеры",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-];
-
 let yamap;
 
 Vue.directive("scroll", {
@@ -109,12 +16,11 @@ Vue.directive("scroll", {
   },
 });
 
-const app = new Vue({
-  el: "#app",
+new Vue({
+  el: "#app-tochno",
   data: {
     showAddressBox: false,
     currentAddress: "",
-    menu: menu,
     selectedType: "шашлык",
     types: [],
     menus: [],
@@ -124,16 +30,24 @@ const app = new Vue({
     map: {},
     addresses: [],
     showMenu: false,
+    showMap: false,
     replacer: false,
     emailName: "",
     emailSubject: "",
     emailEmail: "",
     emailPhone: "",
+    emailFile: "",
+    errorPhone: false,
+    typeDescription: "",
+    emailSendStatus: false,
+    emailButton: "отправить заявку",
+    emailTextFile: "Прикрепить документ (.pdf, .doc)",
   },
   mounted() {
+    let thisScope = this;
     axios.post("http://91.143.171.231/getAddresses").then((response) => {
       this.addresses = response.data;
-      this.currentAddress = response.data[0].address_long;
+      this.currentAddress = response.data[0].address_short;
       this.address_long = response.data[0].address_long;
       this.address_short = response.data[0].address_short;
       this.address_time = response.data[0].time_work;
@@ -158,9 +72,10 @@ const app = new Vue({
           yamap.geoObjects.add(placemark);
         });
       });
+      thisScope.showMap = true;
     });
     axios.post("http://91.143.171.231/getProducts").then((response) => {
-      // get types menuF
+      // get types menu
       let type = new Set();
       for (let [key, value] of Object.entries(response.data)) {
         type.add(value.type.toLowerCase());
@@ -180,6 +95,7 @@ const app = new Vue({
         }
         this.menus.push(menu);
       });
+      this.setDescriptionType(this.selectedType);
       setTimeout(() => {
         $(".owl-carousel").owlCarousel({
           items: 4,
@@ -210,7 +126,7 @@ const app = new Vue({
       this.address_long = address.address_long;
       this.address_short = address.address_long;
       this.address_time = address.time_work;
-      yamap.setCenter(address.center, 17, {
+      yamap.setCenter([address.address_x, address.address_y], 17, {
         checkZoomRange: true,
       });
     },
@@ -225,26 +141,45 @@ const app = new Vue({
       }
       return false;
     },
+    setFile(event) {
+      this.emailFile = event.target.value;
+      this.emailTextFile = event.target.files[0].name;
+    },
     sendEmail() {
-      const formData = new FormData();
-      formData.append("name", this.emailName);
-      formData.append("subject", this.emailSubject);
-      formData.append("email", this.emailEmail);
-      formData.append("phone", this.emailPhone);
-      axios({
-        method: "post",
-        url: "myurl",
-        data: formData,
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-        .then(function (response) {
-          //handle success
-          console.log(response);
-        })
-        .catch(function (response) {
-          //handle error
-          console.log(response);
-        });
+      this.emailButton = "Секундочку...";
+      if (this.emailPhone.length <= 0) {
+        this.errorPhone = true;
+      } else {
+        this.errorPhone = false;
+        const formData = new FormData();
+        formData.append("name", this.emailName);
+        formData.append("subject", this.emailSubject);
+        formData.append("email", this.emailEmail);
+        formData.append("phone", this.emailPhone);
+        formData.append("file", this.emailFile);
+
+        if (!this.emailSendStatus) {
+          axios({
+            method: "post",
+            url: "callback",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+          })
+            .then((response) => {
+              if (response.status == 200) {
+                this.emailSendStatus = true;
+              }
+            })
+            .catch(function (response) {});
+        }
+      }
+    },
+    setDescriptionType(type) {
+      this.menus.forEach((item) => {
+        if (item.recipies[0].type === type) {
+          this.typeDescription = item.recipies[0].description_type;
+        }
+      });
     },
   },
 });

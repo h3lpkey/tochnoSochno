@@ -23,6 +23,8 @@ class ProductController extends Controller
     $product = new Product();
     $product->name = $request->name;
     $product->description = $request->description;
+    $product->description_type = $request->description_type;
+    $product->public_name = $request->public_name;
     $product->type = $request->type;
     $product->gramms = $request->gramms;
     $product->price = $request->price;
@@ -45,6 +47,8 @@ class ProductController extends Controller
     $product->name = $request->name;
 
     $product->description = $request->description;
+    $product->description_type = $request->description_type;
+    $product->public_name = $request->public_name;
     $product->type = $request->type;
     $product->gramms = $request->gramms;
     $product->price = $request->price;
