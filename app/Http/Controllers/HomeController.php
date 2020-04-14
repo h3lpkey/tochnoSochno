@@ -43,5 +43,7 @@ class HomeController extends Controller
   public function callback(Request $request)
   {
     Mail::to(env('ADMIN_MAIL'))->send(new CallBackMessage($request));
+
+    return $this->jsonResponse($data['status'] = 'success');
   }
 }
