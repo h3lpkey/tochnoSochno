@@ -8,8 +8,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/getProducts', 'HomeController@getProducts')->name('getProducts');
-Route::get('/getAddresses', 'HomeController@getAddresses')->name('getAddresses');
+Route::post('/getProducts', 'HomeController@getProducts')->name('getProducts');
+Route::post('/getAddresses', 'HomeController@getAddresses')->name('getAddresses');
 
 //Админка
 Route::group(['middleware' => 'admin'], function(){

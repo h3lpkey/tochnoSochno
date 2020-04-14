@@ -28,12 +28,12 @@ class HomeController extends Controller
     return view('home');
   }
 
-  public function getProducts()
+  public function getProducts(Request $request)
   {
     return $this->jsonResponse(Product::all());
   }
 
-  public function getAddresses()
+  public function getAddresses(Request $request)
   {
     return $this->jsonResponse(Address::all());
   }
