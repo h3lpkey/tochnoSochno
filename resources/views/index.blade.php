@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="/css/app.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=121cc8e0-79c6-4386-bf51-3c1b78a1e585" type="text/javascript"></script>
   <title>Laravel</title>
 </head>
 
@@ -207,35 +208,27 @@
         <div class="contact-wrapper">
           <div class="contacts">
             <h3 class="title-contact">наши адреса:</h3>
-            <div class="select-wrapper">
-              <div class="select" @click="showAddressBox = !showAddressBox">
+            <div class="select-wrapper" @click="showAddressBox = !showAddressBox">
+              <div class="select">
                 <p class="text">@{{currentAddress}}</p>
                 <img src="images/arrow__down.svg" alt="" />
               </div>
-              <div class="select-drop" v-show="showAddressBox">
-                <p class="select-drop_item" @click="setAddress('ленина, 40')">
-                  ленина, 40
-                </p>
-                <p class="select-drop_item" @click="setAddress('помидорка, 8')">
-                  помидорка, 8
-                </p>
-                <p class="select-drop_item" @click="setAddress('храбрость, 9,3б')">
-                  храбрость, 9,3б
+              <div class="select-drop" v-show="showAddressBox" v-for="address in addresses">
+                <p class="select-drop_item" @click="setAddress(address)">
+                  @{{address.short}}
                 </p>
               </div>
             </div>
             <p class="address">
-              г. Екатеринбург <br />ул. Ленина, д. 40 <br />вход со стороны
-              Ленина
+              г. Екатеринбург @{{address_short}}
             </p>
             <p class="time-title">Часы работы:</p>
             <p class="time-text">
-              пн-вс <br />
-              8:00-23:00
+              @{{address_time}}
             </p>
           </div>
           <div class="map-wrapper">
-            <img class="map" src="http://via.placeholder.com/800x640" alt="" />
+            <div id="map"></div>
           </div>
         </div>
       </div>

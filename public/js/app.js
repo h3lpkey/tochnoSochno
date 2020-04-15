@@ -45976,6 +45976,7 @@ var menu = [{
   weight: "130/100/100/80 гр",
   price: "210 РУБ"
 }];
+var yamap;
 Vue.directive("scroll", {
   inserted: function inserted(el, binding) {
     var f = function f(evt) {
@@ -45991,11 +45992,31 @@ var app = new Vue({
   el: "#app",
   data: {
     showAddressBox: false,
-    currentAddress: "ленина, 40",
+    currentAddress: "",
     menu: menu,
     selectedType: "шашлык",
     types: [],
     menus: [],
+    address_short: "",
+    address_long: "",
+    address_time: "",
+    map: {},
+    addresses: [{
+      center: [56.84295, 60.698256],
+      "short": "ТЦ КОР",
+      "long": "ТЦ КОР",
+      time: "ПН-ВС 9:00 - 22:00"
+    }, {
+      center: [56.816341, 60.585913],
+      "short": "Ул. Ясная 2",
+      "long": "Ул. Ясная 2",
+      time: "ПН-ВС 9:00 - 22:00"
+    }, {
+      center: [56.807782, 60.611209],
+      "short": "Южный автовокзал",
+      "long": "Южный автовокзал",
+      time: "ПН-ВС 9:00 - 22:00"
+    }],
     showMenu: false,
     replacer: false,
     emailName: "",
@@ -46039,10 +46060,34 @@ var app = new Vue({
     });
   },
   mounted: function mounted() {
-    console.log("get data");
-    axios.post("http://tochnosochno/getAddresses").then(function (response) {// console.log(response.data)
+    var _this2 = this;
+
+    ymaps.ready(function () {
+      yamap = new ymaps.Map("map", {
+        center: _this2.addresses[0].center,
+        zoom: 17,
+        controls: []
+      });
+
+      _this2.addresses.forEach(function (address) {
+        var placemark = new ymaps.Placemark(address.center, {
+          balloonContent: address.name
+        }, {
+          iconLayout: "default#image",
+          iconImageHref: "images/map-marker.svg",
+          iconImageSize: [30, 42],
+          iconImageOffset: [0, 0]
+        });
+        yamap.geoObjects.add(placemark);
+      });
     });
-    axios.post("http://tochnosochno/getProducts").then(function (response) {// console.log(response.data)
+    this.currentAddress = this.addresses[0]["long"];
+    this.address_long = this.addresses[0]["long"];
+    this.address_short = this.addresses[0]["short"];
+    this.address_time = this.addresses[0].time;
+    axios.post("http://91.143.171.231/getAddresses").then(function (response) {// console.log(response.data)
+    });
+    axios.post("http://91.143.171.231/getProducts").then(function (response) {// console.log(response.data)
     });
     setTimeout(function () {
       $(".owl-carousel").owlCarousel({
@@ -46071,14 +46116,19 @@ var app = new Vue({
   },
   methods: {
     setAddress: function setAddress(address) {
-      this.currentAddress = address;
-      this.showAddressBox = false;
+      this.currentAddress = address["short"];
+      this.address_long = address["long"];
+      this.address_short = address["short"];
+      this.address_time = address.time;
+      yamap.setCenter(address.center, 17, {
+        checkZoomRange: true
+      });
     },
     filterMenu: function filterMenu() {
-      var _this2 = this;
+      var _this3 = this;
 
       return this.menu.filter(function (item) {
-        return item.type === _this2.selectedType;
+        return item.type === _this3.selectedType;
       });
     },
     handleScroll: function handleScroll(evt, el) {

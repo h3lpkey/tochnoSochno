@@ -16,7 +16,7 @@
   src: url(../fonts/Montserrat.ttf);
 }
 
-$media-tablet: 1000px;
+$media-tablet: 1024px;
 
 html {
   scroll-behavior: smooth;
@@ -747,6 +747,11 @@ a {
   }
 }
 .section-contacts {
+  .wrapper {
+    @media (max-width: $media-tablet) {
+      margin: auto;
+    }
+  }
   .title {
     font-size: 96px;
     color: white;
@@ -760,10 +765,21 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 530px;
+    position: relative;
     .contacts {
+      @media (max-width: $media-tablet) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+      }
       .title-contact {
         color: white;
         font-size: 28px;
+        @media (max-width: $media-tablet) {
+          display: none;
+        }
       }
       .select-wrapper {
         background: linear-gradient(to right, #ff6b00, #ff0000);
@@ -771,6 +787,11 @@ a {
         width: 350px;
         text-transform: uppercase;
         cursor: pointer;
+        position: absolute;
+        @media (max-width: $media-tablet) {
+          left: calc(50% - 175px);
+          z-index: 2;
+        }
         .select {
           font-family: "Proxima";
           color: white;
@@ -779,6 +800,10 @@ a {
           padding: 25px;
           display: flex;
           justify-content: space-between;
+          @media (max-width: $media-tablet) {
+            background-color: white;
+            color: #060606;
+          }
           .text {
             padding: 0;
             margin: 0;
@@ -790,6 +815,10 @@ a {
           font-size: 24px;
           padding: 25px;
           background: #060606;
+          @media (max-width: $media-tablet) {
+            background-color: white;
+            color: #060606;
+          }
         }
         .select-drop_item {
           &:hover {
@@ -808,41 +837,75 @@ a {
         color: #878787;
         font-size: 28px;
         line-height: 40px;
+        margin-top: 150px;
+        @media (max-width: $media-tablet) {
+          margin-top: 350px;
+          text-align: center;
+        }
       }
       .time-text {
         color: #878787;
         font-size: 28px;
         line-height: 40px;
         margin: 0;
+        @media (max-width: $media-tablet) {
+          text-align: center;
+        }
       }
       .time-title {
         color: white;
         font-size: 28px;
         line-height: 40px;
         margin: 0;
+        @media (max-width: $media-tablet) {
+          text-align: center;
+        }
       }
     }
   }
   .map-wrapper {
     position: relative;
+    @media (max-width: $media-tablet) {
+      position: absolute;
+      top: 40px;
+      left: calc(50% - 300px);
+    }
+    #map {
+      width: 600px;
+      height: 100%;
+      @media (max-width: $media-tablet) {
+        height: 300px;
+      }
+    }
     .map {
       position: absolute;
       right: 0;
       height: 100%;
+      object-fit: contain;
     }
     @media (max-width: $media-tablet) {
-      display: none;
     }
   }
 }
 .section-footer {
   background: #0b0909;
+  position: relative;
+  @media (max-width: $media-tablet) {
+    padding-bottom: 50px;
+  }
   .footer-wrapper {
     display: flex;
     justify-content: space-between;
+    @media (max-width: $media-tablet) {
+      flex-direction: column;
+      align-items: center;
+    }
     .logo-footer {
       margin-top: 60px;
       height: 80px;
+      @media (max-width: $media-tablet) {
+        margin-top: 20px;
+      }
     }
     .footer-menu {
       font-family: "Montserrat";
@@ -851,9 +914,15 @@ a {
       flex-direction: column;
       font-size: 14px;
       line-height: 40px;
+      @media (max-width: $media-tablet) {
+        margin-top: 20px;
+      }
       a {
         color: white;
         text-transform: uppercase;
+        @media (max-width: $media-tablet) {
+          text-align: center;
+        }
         &:hover {
           color: #ff0000;
         }
@@ -866,6 +935,9 @@ a {
       flex-direction: column;
       font-size: 14px;
       line-height: 40px;
+      @media (max-width: $media-tablet) {
+        display: none;
+      }
       a {
         color: white;
         text-decoration: underline;
@@ -880,9 +952,17 @@ a {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      @media (max-width: $media-tablet) {
+        align-items: center;
+      }
       .scroll-top {
         margin-bottom: 35px;
         cursor: pointer;
+        @media (max-width: $media-tablet) {
+          position: absolute;
+          top: -40px;
+          right: 20px;
+        }
         img {
           transform: rotate(180deg);
         }
@@ -890,6 +970,9 @@ a {
       .footer-phone {
         color: white;
         font-size: 30px;
+        @media (max-width: $media-tablet) {
+          font-size: 18px;
+        }
         &:hover {
           color: #ff0000;
         }
@@ -899,6 +982,9 @@ a {
         color: #ec290f;
         display: flex;
         font-size: 24px;
+        @media (max-width: $media-tablet) {
+          margin-top: 15px;
+        }
         p {
           margin: 0;
           margin-top: 4px;

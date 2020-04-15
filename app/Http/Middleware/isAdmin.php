@@ -15,10 +15,10 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-      if(auth()->check() && auth()->user()->admin){
-          return $next($request);
-      }else{
-          return redirect(route('landing'));
-      }
+        if (auth()->check() && auth()->user()->admin) {
+            return $next($request);
+        } else {
+            return redirect(route('landing'));
+        }
     }
 }
