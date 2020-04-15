@@ -12,21 +12,21 @@
   <div id="app">
     <section class="section section-head" id="section-head">
       <div class="wrapper">
-        <div class="header-reaplcer"></div>
-        <div class="header" v-scroll="handleScroll">
-          <div class="menu-btn">
+        <div class="header-reaplcer" v-show="replacer || showMenu"></div>
+        <div class="header" v-bind:class="{ 'header-fixed': replacer || showMenu, 'header-opened': showMenu }" v-scroll="handleScroll">
+          <div class="menu-btn" @click="showMenu = !showMenu">
             <img src="images/menu.svg" alt="">
           </div>
-          <!-- <div class="logo">
+          <div class="logo">
             <img src="images/logo-cirlce.svg" alt="logo" />
-          </div> -->
-          <!-- <nav class="menu">
+          </div>
+          <nav class="menu" v-bind:class="{ 'menu-mobile': showMenu }">
             <a href="#section-menu">меню</a>
             <a href="#section-deliver">доставка</a>
             <a href="#section-foodtrack">фудтрак</a>
             <a href="#section-cashback">кэшбек</a>
             <a href="#section-contacts">контакты</a>
-          </nav> -->
+          </nav>
           <a href="#" class="instagram">
             <img src="images/instagram.svg" alt="" />
             <p>instagram</p>
@@ -152,42 +152,47 @@
         <div class="cashback-wrapper-list">
           <ul class="list-first">
             <li class="list-item">
-              <span class="list-item_number">1</span>
+              <span class="list-item_number">1.</span>
               <div class="list-item_shadow"></div>
               заполни анкету
+              <div class="arrow_orange"></div>
             </li>
             <li class="list-item">
-              <span class="list-item_number">2</span>
+              <span class="list-item_number">2.</span>
               <div class="list-item_shadow"></div>
               подтверди свой номер телефона
+              <div class="arrow_orange"></div>
             </li>
             <li class="list-item">
-              <span class="list-item_number">3</span>
+              <span class="list-item_number">3.</span>
               <div class="list-item_shadow"></div>
               Подпишись на наш инстаграм
+              <div class="arrow_orange"></div>
             </li>
             <li class="list-item">
-              <span class="list-item_number">4</span>
+              <span class="list-item_number">4.</span>
               <div class="list-item_shadow"></div>
               Получи карту
             </li>
           </ul>
           <ul class="list-second">
-            <li class="list-item">
-              <div class="icon"></div>
-              <div class="list-item_shadow"></div>
-              7% кэшбек на первую покупку
-            </li>
-            <li class="list-item">
-              <div class="icon"></div>
-              <div class="list-item_shadow"></div>
-              3% кэшбек на все покупки
-            </li>
-            <li class="list-item">
-              <div class="icon"></div>
-              <div class="list-item_shadow"></div>
-              300 баллов в день рождения
-            </li>
+            <div class="wrapper-background">
+              <li class="list-item">
+                <div class="icon"></div>
+                <div class="list-item_shadow"></div>
+                7% кэшбек на первую покупку
+              </li>
+              <li class="list-item">
+                <div class="icon"></div>
+                <div class="list-item_shadow"></div>
+                3% кэшбек на все покупки
+              </li>
+              <li class="list-item">
+                <div class="icon"></div>
+                <div class="list-item_shadow"></div>
+                300 баллов в день рождения
+              </li>
+            </div>
           </ul>
         </div>
         <div class="btn-wrapper btn-wrapper__alw">

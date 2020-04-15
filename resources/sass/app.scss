@@ -15,6 +15,9 @@
   font-family: "Montserrat";
   src: url(../fonts/Montserrat.ttf);
 }
+
+$media-tablet: 1000px;
+
 html {
   scroll-behavior: smooth;
 }
@@ -75,7 +78,7 @@ a {
     @media (max-width: 1000px) {
       margin: 0 50px;
     }
-    @media (max-width: 600px) {
+    @media (max-width: $media-tablet) {
       margin: 0 20px;
     }
   }
@@ -85,26 +88,46 @@ a {
   flex-direction: column;
   background: url(../img/background_header.jpg) no-repeat center center;
   background-size: cover;
+  .wrapper {
+    margin: auto;
+  }
   .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 50px;
     transition: 0.5s;
+    margin-top: 50px;
+    @media (max-width: $media-tablet) {
+      margin-top: 0;
+    }
+    &-opened {
+      background-color: #060606;
+    }
     .menu-btn {
+      display: none;
       cursor: pointer;
       margin: 20px;
+      @media (max-width: $media-tablet) {
+        display: block;
+      }
     }
     .logo {
       width: 115px;
       height: 80px;
+      @media (max-width: $media-tablet) {
+        display: none;
+      }
       img {
         max-width: 100%;
         height: 100%;
       }
     }
     .menu {
+      transition: 0.5s;
+      @media (max-width: $media-tablet) {
+        display: none;
+      }
       a {
         color: white;
         font-size: 24px;
@@ -116,6 +139,18 @@ a {
         &:hover {
           color: #ff0000;
         }
+      }
+    }
+    .menu-mobile {
+      display: flex;
+      position: fixed;
+      flex-wrap: wrap;
+      top: 80px;
+      width: 100%;
+      background-color: #060606;
+      padding: 20px;
+      a {
+        line-height: 60px;
       }
     }
     .phone {
@@ -130,36 +165,40 @@ a {
       }
     }
     .phone-mobile {
-      width: 70px;
-      height: 70px;
-      background-image: url("../img/phone.svg");
-      background-repeat: no-repeat;
-      margin: 5px;
-      a {
-        color: transparent;
-        &:hover {
+      @media (max-width: $media-tablet) {
+        width: 70px;
+        height: 70px;
+        background-image: url("../img/phone.svg");
+        background-repeat: no-repeat;
+        margin: 5px;
+        a {
           color: transparent;
+          &:hover {
+            color: transparent;
+          }
         }
       }
     }
     .instagram {
-      display: flex;
-      flex-direction: row;
-      cursor: pointer;
-      color: white;
-      font-size: 18px;
-      margin: 0;
-      align-items: center;
-      img {
-        width: 25px;
-        height: 25px;
-        margin-right: 16px;
+      display: none;
+      @media (max-width: $media-tablet) {
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+        color: white;
+        font-size: 18px;
+        margin: 0;
+        align-items: center;
+        img {
+          width: 25px;
+          height: 25px;
+          margin-right: 16px;
+        }
       }
     }
   }
   .header-reaplcer {
-    height: 100px;
-    background-color: red;
+    height: 80px;
   }
   .header-fixed {
     position: fixed;
@@ -170,7 +209,6 @@ a {
     margin: 0;
     z-index: 100;
     padding: 20px 0;
-    opacity: 0.88;
     padding: 0;
   }
   .big-logo {
@@ -180,7 +218,7 @@ a {
     margin: auto;
     margin-top: 150px;
     margin-bottom: 90px;
-    @media (max-width: 600px) {
+    @media (max-width: $media-tablet) {
       width: 270px;
     }
     img {
@@ -194,12 +232,18 @@ a {
     margin: auto;
     justify-content: center;
     background: url(../img/btnRedBack.png) no-repeat center center;
-    background-size: cover;
+    background-size: contain;
     margin-bottom: 80px;
     cursor: pointer;
+    @media (max-width: $media-tablet) {
+      height: 80px;
+    }
     p {
       color: white;
       font-size: 36px;
+      @media (max-width: $media-tablet) {
+        font-size: 24px;
+      }
     }
   }
   .bottom-buttons {
@@ -208,15 +252,17 @@ a {
     line-height: 24px;
     display: flex;
     justify-content: space-between;
+    margin: auto;
+    width: 90%;
     margin-bottom: 50px;
-    @media (max-width: 600px) {
+    @media (max-width: $media-tablet) {
       justify-content: center;
     }
     .city {
       display: flex;
       flex-direction: row;
       cursor: pointer;
-      @media (max-width: 600px) {
+      @media (max-width: $media-tablet) {
         display: none;
       }
       img {
@@ -226,9 +272,10 @@ a {
     .instagram {
       display: flex;
       flex-direction: row;
+      align-items: center;
       cursor: pointer;
       color: white;
-      @media (max-width: 600px) {
+      @media (max-width: $media-tablet) {
         display: none;
       }
       img {
@@ -240,6 +287,11 @@ a {
 .section-highlight {
   background: url(../img/background_highlights.jpg) no-repeat;
   background-size: cover;
+  .wrapper {
+    @media (max-width: $media-tablet) {
+      margin: 0;
+    }
+  }
   .list {
     list-style: none;
     display: flex;
@@ -257,11 +309,12 @@ a {
       text-align: center;
       max-width: 170px;
       min-width: 125px;
-      @media (max-width: 600px) {
+      @media (max-width: $media-tablet) {
         font-size: 14px;
+        margin-right: 25px;
       }
       .list-item_text {
-        @media (max-width: 600px) {
+        @media (max-width: $media-tablet) {
           width: 80px;
           margin: auto;
         }
@@ -277,7 +330,7 @@ a {
   .title {
     color: white;
     font-size: 96px;
-    @media (max-width: 600px) {
+    @media (max-width: $media-tablet) {
       font-size: 48px;
       text-align: center;
     }
@@ -287,7 +340,7 @@ a {
     font-size: 28px;
     max-width: 800px;
     margin: 0;
-    @media (max-width: 600px) {
+    @media (max-width: $media-tablet) {
       display: none;
     }
   }
@@ -295,7 +348,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     margin-top: 75px;
-    @media (max-width: 600px) {
+    @media (max-width: $media-tablet) {
       margin: 30px auto;
       display: flex;
       justify-content: space-between;
@@ -309,7 +362,7 @@ a {
       justify-content: center;
       font-size: 36px;
       cursor: pointer;
-      @media (max-width: 600px) {
+      @media (max-width: $media-tablet) {
         width: 110px;
         height: 50px;
         font-size: 16px;
@@ -335,7 +388,7 @@ a {
     font-size: 24px;
     color: white;
     margin-bottom: 65px;
-    @media (max-width: 600px) {
+    @media (max-width: $media-tablet) {
       display: none;
     }
   }
@@ -345,6 +398,9 @@ a {
     width: 100%;
     position: relative;
     height: 500px;
+    @media (max-width: $media-tablet) {
+      margin-bottom: 200px;
+    }
     .menu-background {
       padding: 2px;
       min-width: 210px;
@@ -382,6 +438,9 @@ a {
         font-family: "Marvin";
         margin: 0 30px 30px;
       }
+    }
+    .owl-stage:first-child {
+      padding-left: 0 !important;
     }
     .owl-stage-outer {
       z-index: 2;
@@ -445,11 +504,18 @@ a {
     width: 350px;
     margin-top: 50px;
     margin-bottom: 50px;
+    @media (max-width: $media-tablet) {
+      display: none;
+    }
   }
 }
 .section-deliver {
   background: url(../img/background_deliver.jpg) no-repeat center center;
   background-size: cover;
+  @media (max-width: $media-tablet) {
+    position: relative;
+    height: 0;
+  }
   .deliver-wrapper {
     max-width: 730px;
     margin-top: 175px;
@@ -458,7 +524,7 @@ a {
       font-size: 96px;
       color: white;
       margin: 10px 0;
-      @media (max-width: 600px) {
+      @media (max-width: $media-tablet) {
         font-size: 48px;
       }
     }
@@ -472,9 +538,18 @@ a {
     display: flex;
     justify-content: space-between;
     margin-top: 85px;
+    @media (max-width: $media-tablet) {
+      position: absolute;
+      top: -200px;
+      margin-top: 0;
+      flex-wrap: wrap;
+    }
     .btn-wrapper {
       width: 350px;
       height: 66px;
+      @media (max-width: $media-tablet) {
+        margin-bottom: 25px;
+      }
     }
   }
 }
@@ -482,13 +557,20 @@ a {
   background: url(../img/background_foodtrack.jpg) no-repeat center center;
   background-size: cover;
   color: white;
+  @media (max-width: $media-tablet) {
+    background-image: none;
+    background-color: #121010;
+  }
   .foodtrack-wrapper {
     max-width: 900px;
     margin: 90px auto 100px;
+    @media (max-width: $media-tablet) {
+      margin: 40px auto;
+    }
     .title {
       font-size: 96px;
       text-align: center;
-      @media (max-width: 600px) {
+      @media (max-width: $media-tablet) {
         font-size: 48px;
       }
     }
@@ -496,6 +578,10 @@ a {
       font-size: 28px;
       text-align: center;
       margin-bottom: 100px;
+      @media (max-width: $media-tablet) {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
     }
     .foodtrack-inputs {
       display: flex;
@@ -508,21 +594,35 @@ a {
         font-family: "Proxima";
         font-size: 24px;
         padding-left: 25px;
+        @media (max-width: $media-tablet) {
+          height: 50px;
+          font-size: 14px;
+        }
       }
     }
   }
 }
 .section-cashback {
+  .wrapper {
+    overflow: unset;
+  }
   .title {
     font-size: 96px;
     color: white;
-    @media (max-width: 600px) {
+    @media (max-width: $media-tablet) {
       font-size: 48px;
+      text-align: center;
+      margin-bottom: 0;
     }
   }
   .cashback-wrapper-list {
     display: flex;
     justify-content: space-between;
+    @media (max-width: $media-tablet) {
+      flex-direction: column-reverse;
+      margin-bottom: 150px;
+      align-items: center;
+    }
     .list-first {
       list-style: none;
       padding: 0;
@@ -531,10 +631,19 @@ a {
         font-size: 30px;
         line-height: 70px;
         position: relative;
+        @media (max-width: $media-tablet) {
+          font-size: 18px;
+          text-align: center;
+        }
         .list-item_number {
           color: #ff0000;
           margin-right: 50px;
           font-family: "Proxima";
+          @media (max-width: $media-tablet) {
+            color: white;
+            margin-right: 0;
+            font-family: "Marvin";
+          }
         }
         .list-item_shadow {
           width: 0;
@@ -543,6 +652,24 @@ a {
           top: 31px;
           left: 7px;
           box-shadow: 0px 0px 30px 10px #ff0000;
+          @media (max-width: $media-tablet) {
+            display: none;
+          }
+        }
+        .arrow_orange {
+          display: none;
+          background-image: url(../img/arrow__orange.svg);
+          background-size: contain;
+          background-position: center;
+          width: 100px;
+          height: 100px;
+          margin: auto;
+          position: absolute;
+          left: calc(50% - 50px);
+          top: 17px;
+          @media (max-width: $media-tablet) {
+            display: flex;
+          }
         }
       }
     }
@@ -551,32 +678,45 @@ a {
       padding: 0;
       width: 515px;
       height: 332px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      background: url(../img/ul-border.svg) no-repeat;
-      .list-item {
-        position: relative;
-        font-size: 24px;
-        color: white;
+      background: linear-gradient(to right, #ff6b00, #ff0000);
+      padding: 2px;
+      @media (max-width: $media-tablet) {
+        height: 174px;
+        width: unset;
+      }
+      .wrapper-background {
         display: flex;
-        margin-left: 40px;
-        .icon {
-          background: url(../img/circle.svg) no-repeat;
-          background-position-y: -24px;
-          background-position-x: -25px;
-          background-size: 300%;
-          margin-right: 25px;
-          width: 25px;
-          height: 25px;
-        }
-        .list-item_shadow {
-          width: 0;
-          height: 0;
-          position: absolute;
-          top: 12px;
-          left: 11px;
-          box-shadow: 0px 0px 30px 10px #ff0000;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        background-color: #060606;
+        .list-item {
+          position: relative;
+          font-size: 24px;
+          color: white;
+          display: flex;
+          margin-left: 40px;
+          @media (max-width: $media-tablet) {
+            font-size: 14px;
+            margin: 0 40px;
+          }
+          .icon {
+            background: url(../img/circle.svg) no-repeat;
+            background-position-y: -24px;
+            background-position-x: -25px;
+            background-size: 300%;
+            margin-right: 25px;
+            width: 25px;
+            height: 25px;
+          }
+          .list-item_shadow {
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 12px;
+            left: 11px;
+            box-shadow: 0px 0px 30px 10px #ff0000;
+          }
         }
       }
     }
@@ -584,6 +724,10 @@ a {
   .btn-wrapper {
     margin-top: 75px;
     width: 350px;
+    @media (max-width: $media-tablet) {
+      width: 100%;
+      padding: 0;
+    }
   }
   .img-wrapper {
     position: relative;
@@ -593,9 +737,12 @@ a {
       position: absolute;
       top: -215px;
       right: 0;
-    }
-    @media (max-width: 600px) {
-      display: none;
+      @media (max-width: $media-tablet) {
+        opacity: 0.8;
+        width: 140px;
+        right: calc(50% - 70px);
+        top: -215px;
+      }
     }
   }
 }
@@ -604,8 +751,9 @@ a {
     font-size: 96px;
     color: white;
     text-align: center;
-    @media (max-width: 600px) {
+    @media (max-width: $media-tablet) {
       font-size: 48px;
+      margin-top: 100px;
     }
   }
   .contact-wrapper {
@@ -682,7 +830,7 @@ a {
       right: 0;
       height: 100%;
     }
-    @media (max-width: 600px) {
+    @media (max-width: $media-tablet) {
       display: none;
     }
   }

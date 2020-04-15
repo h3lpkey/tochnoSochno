@@ -117,6 +117,7 @@ const app = new Vue({
     types: [],
     menus: [],
     showMenu: false,
+    replacer: false,
     emailName: "",
     emailSubject: "",
     emailEmail: "",
@@ -145,6 +146,13 @@ const app = new Vue({
     });
   },
   mounted() {
+    console.log("get data");
+    axios.post("http://tochnosochno/getAddresses").then((response) => {
+      // console.log(response.data)
+    });
+    axios.post("http://tochnosochno/getProducts").then((response) => {
+      // console.log(response.data)
+    });
     setTimeout(() => {
       $(".owl-carousel").owlCarousel({
         items: 4,
@@ -159,6 +167,10 @@ const app = new Vue({
             nav: false,
           },
           600: {
+            items: 2,
+            nav: true,
+          },
+          800: {
             items: 3,
             nav: true,
           },
@@ -176,9 +188,9 @@ const app = new Vue({
     },
     handleScroll: function (evt, el) {
       if (window.scrollY > 500) {
-        el.classList.add("header-fixed");
+        this.replacer = true;
       } else {
-        el.classList.remove("header-fixed");
+        this.replacer = false;
       }
       return false;
     },
