@@ -58,23 +58,23 @@
         <ul class="list">
           <li class="list-item">
             <img class="list-item_img" src="images/01.png" alt="всегда свежее мясо" />
-            <p class="list-item_text">всегда свежее мясо</p>
+            <p class="list-item_text">всегда <br> свежее мясо</p>
           </li>
           <li class="list-item">
             <img class="list-item_img" src="images/02.png" alt="готовим на углях" />
-            <p class="list-item_text">готовим на углях</p>
+            <p class="list-item_text">готовим <br> на углях</p>
           </li>
           <li class="list-item">
             <img class="list-item_img" src="images/03.png" alt="удобство заказа" />
-            <p class="list-item_text">удобство заказа</p>
+            <p class="list-item_text">удобство <br> заказа</p>
           </li>
           <li class="list-item">
             <img class="list-item_img" src="images/04.png" alt="выездное обслуживание" />
-            <p class="list-item_text">выездное обслуживание</p>
+            <p class="list-item_text">выездное <br> обслуживание</p>
           </li>
           <li class="list-item">
             <img class="list-item_img" src="images/05.png" alt="привелегии для гостей" />
-            <p class="list-item_text">привелегии для гостей</p>
+            <p class="list-item_text">привелегии <br> для гостей</p>
           </li>
         </ul>
       </div>
@@ -95,16 +95,16 @@
         <div class="menu-wrapper owl-carousel owl-theme" :dots="false" v-for="(menu, index) in menus" v-show="menu.name === selectedType">
           <div class="menu-background" v-for="(item, index) in menu.recipies" :key="item.name">
             <div class="menu-item">
-              <img class="menu-item-img" :src="item.image" :alt="item.title" />
-              <p class="menu-item-title">@{{item.title}}</p>
-              <p class="menu-item-text">@{{item.text}}</p>
-              <p class="menu-item-weight">@{{item.weight}}</p>
-              <p class="menu-item-price">@{{item.price}}</p>
+              <img class="menu-item-img" :src="item.src" :alt="item.name" />
+              <p class="menu-item-title">@{{item.name}}</p>
+              <p class="menu-item-text">@{{item.description}}</p>
+              <p class="menu-item-weight">@{{item.gramms}}</p>
+              <p class="menu-item-price">@{{item.price}} РУБ</p>
             </div>
           </div>
         </div>
         <div class="btn-wrapper btn-wrapper__alw">
-          <button>перейти к заказу</button>
+          <a href="#section-deliver"><button>перейти к заказу</button></a>
         </div>
       </div>
     </section>
@@ -134,6 +134,9 @@
             Намечается вечеринка, массовый досуг или шабаш на берегу озера?
             Кухня на колесах способна готовить любые блюда из нашего меню, в
             любом месте и в любое время
+          </p>
+          <p class="text-mobile">
+            Кухня на колесах способна готовить любые блюда из нашего меню, в любом месте и в любое время
           </p>
           <div class="foodtrack-inputs">
             <input class="input" type="text" v-model="emailName" placeholder="Ваше имя" />
@@ -215,7 +218,7 @@
               </div>
               <div class="select-drop" v-show="showAddressBox" v-for="address in addresses">
                 <p class="select-drop_item" @click="setAddress(address)">
-                  @{{address.short}}
+                  @{{address.address_short}}
                 </p>
               </div>
             </div>

@@ -23,6 +23,7 @@ class ProductController extends Controller
     $product = new Product();
     $product->name = $request->name;
     $product->description = $request->description;
+    $product->type = $request->type;
     $product->gramms = $request->gramms;
     $product->price = $request->price;
 
@@ -44,6 +45,7 @@ class ProductController extends Controller
     $product->name = $request->name;
 
     $product->description = $request->description;
+    $product->type = $request->type;
     $product->gramms = $request->gramms;
     $product->price = $request->price;
     if (isset($request->src)) {

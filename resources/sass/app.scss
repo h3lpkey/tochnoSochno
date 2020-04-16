@@ -210,6 +210,9 @@ a {
     z-index: 100;
     padding: 20px 0;
     padding: 0;
+    .logo {
+      padding: 20px;
+    }
   }
   .big-logo {
     display: flex;
@@ -252,6 +255,7 @@ a {
     line-height: 24px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: auto;
     width: 90%;
     margin-bottom: 50px;
@@ -275,6 +279,9 @@ a {
       align-items: center;
       cursor: pointer;
       color: white;
+      p {
+        margin-bottom: 20px;
+      }
       @media (max-width: $media-tablet) {
         display: none;
       }
@@ -338,6 +345,7 @@ a {
   .text {
     color: white;
     font-size: 28px;
+    line-height: 40px;
     max-width: 800px;
     margin: 0;
     @media (max-width: $media-tablet) {
@@ -351,11 +359,10 @@ a {
     @media (max-width: $media-tablet) {
       margin: 30px auto;
       display: flex;
-      justify-content: space-between;
     }
     .item {
       color: white;
-      width: 280px;
+      width: 270px;
       height: 120px;
       display: flex;
       align-items: center;
@@ -411,6 +418,7 @@ a {
         flex-direction: column;
         cursor: pointer;
         background: #060606;
+        height: 100%;
       }
       .menu-item-img {
         width: 100%;
@@ -499,6 +507,12 @@ a {
         }
       }
     }
+    .owl-item {
+      opacity: 0.5;
+    }
+    .owl-item.active {
+      opacity: 1;
+    }
   }
   .btn-wrapper {
     width: 350px;
@@ -508,6 +522,7 @@ a {
       display: none;
     }
   }
+  
 }
 .section-deliver {
   background: url(../img/background_deliver.jpg) no-repeat center center;
@@ -579,8 +594,19 @@ a {
       text-align: center;
       margin-bottom: 100px;
       @media (max-width: $media-tablet) {
+        display: none;
+      }
+    }
+    .text-mobile {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 100px;
+      display: none;
+      @media (max-width: $media-tablet) {
+        display: block;
         font-size: 16px;
         margin-bottom: 20px;
+        line-height: 25px;
       }
     }
     .foodtrack-inputs {
@@ -589,6 +615,8 @@ a {
       max-width: 515px;
       margin: auto;
       .input {
+        border-radius: 2px;
+        border: none;
         margin-bottom: 30px;
         height: 70px;
         font-family: "Proxima";
@@ -696,6 +724,8 @@ a {
           color: white;
           display: flex;
           margin-left: 40px;
+          display: flex;
+          align-items: center;
           @media (max-width: $media-tablet) {
             font-size: 14px;
             margin: 0 40px;
@@ -708,6 +738,7 @@ a {
             margin-right: 25px;
             width: 25px;
             height: 25px;
+            margin-bottom: 3px;
           }
           .list-item_shadow {
             width: 0;
@@ -819,12 +850,11 @@ a {
             background-color: white;
             color: #060606;
           }
+          &:hover {
+            background: linear-gradient(to right, #ff6b00, #ff0000);
+          }
         }
         .select-drop_item {
-          &:hover {
-            text-decoration: underline;
-            text-decoration-color: #ff6b00;
-          }
           &:first-child {
             margin-top: 0;
           }

@@ -21,6 +21,10 @@
                 <input type="text" class="form-control" name="description" @if(isset($product)) value="{{$product->description}}" @else value="{{old('description')}}" @endif>
               </div>
               <div class="form-group">
+                <label for="exampleFormControlInput1">Тип в меню</label>
+                <input type="text" class="form-control" name="type" @if(isset($product)) value="{{$product->type}}" @else value="{{old('type')}}" @endif>
+              </div>
+              <div class="form-group">
                 <label for="exampleFormControlInput1">Грамм</label>
                 <input type="text" class="form-control" name="gramms" @if(isset($product)) value="{{$product->gramms}}" @else value="{{old('gramms')}}" @endif>
               </div>

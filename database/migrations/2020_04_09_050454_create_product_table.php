@@ -18,6 +18,7 @@ class CreateProductTable extends Migration
             $table->string('src');
             $table->string('name')->unique();
             $table->string('description');
+            $table->string('type');
             $table->string('gramms');
             $table->string('price');
             $table->timestamps();

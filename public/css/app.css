@@ -964,6 +964,10 @@ a {
   padding: 0;
 }
 
+.section-head .header-fixed .logo {
+  padding: 20px;
+}
+
 .section-head .big-logo {
   display: flex;
   justify-content: center;
@@ -1018,6 +1022,7 @@ a {
   line-height: 24px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: auto;
   width: 90%;
   margin-bottom: 50px;
@@ -1051,6 +1056,10 @@ a {
   align-items: center;
   cursor: pointer;
   color: white;
+}
+
+.section-head .bottom-buttons .instagram p {
+  margin-bottom: 20px;
 }
 
 @media (max-width: 1024px) {
@@ -1135,6 +1144,7 @@ a {
 .section-menu .text {
   color: white;
   font-size: 28px;
+  line-height: 40px;
   max-width: 800px;
   margin: 0;
 }
@@ -1155,13 +1165,12 @@ a {
   .section-menu .menu-select {
     margin: 30px auto;
     display: flex;
-    justify-content: space-between;
   }
 }
 
 .section-menu .menu-select .item {
   color: white;
-  width: 280px;
+  width: 270px;
   height: 120px;
   display: flex;
   align-items: center;
@@ -1235,6 +1244,7 @@ a {
   flex-direction: column;
   cursor: pointer;
   background: #060606;
+  height: 100%;
 }
 
 .section-menu .menu-wrapper .menu-background .menu-item-img {
@@ -1333,6 +1343,14 @@ a {
   background-size: contain;
   background-image: url(/images/bottom_btn.svg?67efbf036fdac717fd0c18d8d5a170ee);
   background-repeat: no-repeat;
+}
+
+.section-menu .menu-wrapper .owl-item {
+  opacity: 0.5;
+}
+
+.section-menu .menu-wrapper .owl-item.active {
+  opacity: 1;
 }
 
 .section-menu .btn-wrapper {
@@ -1452,8 +1470,23 @@ a {
 
 @media (max-width: 1024px) {
   .section-foodtrack .foodtrack-wrapper .text {
+    display: none;
+  }
+}
+
+.section-foodtrack .foodtrack-wrapper .text-mobile {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 100px;
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .section-foodtrack .foodtrack-wrapper .text-mobile {
+    display: block;
     font-size: 16px;
     margin-bottom: 20px;
+    line-height: 25px;
   }
 }
 
@@ -1465,6 +1498,8 @@ a {
 }
 
 .section-foodtrack .foodtrack-wrapper .foodtrack-inputs .input {
+  border-radius: 2px;
+  border: none;
   margin-bottom: 30px;
   height: 70px;
   font-family: "Proxima";
@@ -1606,6 +1641,8 @@ a {
   color: white;
   display: flex;
   margin-left: 40px;
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 1024px) {
@@ -1623,6 +1660,7 @@ a {
   margin-right: 25px;
   width: 25px;
   height: 25px;
+  margin-bottom: 3px;
 }
 
 .section-cashback .cashback-wrapper-list .list-second .wrapper-background .list-item .list-item_shadow {
@@ -1767,10 +1805,8 @@ a {
   }
 }
 
-.section-contacts .contact-wrapper .contacts .select-wrapper .select-drop_item:hover {
-  text-decoration: underline;
-  -webkit-text-decoration-color: #ff6b00;
-          text-decoration-color: #ff6b00;
+.section-contacts .contact-wrapper .contacts .select-wrapper .select-drop:hover {
+  background: linear-gradient(to right, #ff6b00, #ff0000);
 }
 
 .section-contacts .contact-wrapper .contacts .select-wrapper .select-drop_item:first-child {

@@ -45907,8 +45907,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 var menu = [{
   image: "images/menu1.jpg",
-  title: "кукаб",
-  type: "кукаб",
+  title: "шаурма",
+  type: "шаурма",
   text: "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
   weight: "130/100/100/80 гр",
   price: "210 РУБ"
@@ -46001,22 +46001,7 @@ var app = new Vue({
     address_long: "",
     address_time: "",
     map: {},
-    addresses: [{
-      center: [56.84295, 60.698256],
-      "short": "ТЦ КОР",
-      "long": "ТЦ КОР",
-      time: "ПН-ВС 9:00 - 22:00"
-    }, {
-      center: [56.816341, 60.585913],
-      "short": "Ул. Ясная 2",
-      "long": "Ул. Ясная 2",
-      time: "ПН-ВС 9:00 - 22:00"
-    }, {
-      center: [56.807782, 60.611209],
-      "short": "Южный автовокзал",
-      "long": "Южный автовокзал",
-      time: "ПН-ВС 9:00 - 22:00"
-    }],
+    addresses: [],
     showMenu: false,
     replacer: false,
     emailName: "",
@@ -46024,111 +46009,107 @@ var app = new Vue({
     emailEmail: "",
     emailPhone: ""
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
-    // get types menuF
-    var type = new Set();
+    axios.post("http://91.143.171.231/getAddresses").then(function (response) {
+      _this.addresses = response.data;
+      _this.currentAddress = response.data[0].address_long;
+      _this.address_long = response.data[0].address_long;
+      _this.address_short = response.data[0].address_short;
+      _this.address_time = response.data[0].time_work;
+      ymaps.ready(function () {
+        yamap = new ymaps.Map("map", {
+          center: [response.data[0].address_x, response.data[0].address_y],
+          zoom: 17,
+          controls: []
+        });
 
-    for (var _i = 0, _Object$entries = Object.entries(this.menu); _i < _Object$entries.length; _i++) {
-      var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-          key = _Object$entries$_i[0],
-          value = _Object$entries$_i[1];
+        _this.addresses.forEach(function (address) {
+          var placemark = new ymaps.Placemark([address.address_x, address.address_y], {
+            balloonContent: address.address_short
+          }, {
+            iconLayout: "default#image",
+            iconImageHref: "images/map-marker.svg",
+            iconImageSize: [30, 42],
+            iconImageOffset: [0, 0]
+          });
+          yamap.geoObjects.add(placemark);
+        });
+      });
+    });
+    axios.post("http://91.143.171.231/getProducts").then(function (response) {
+      // get types menuF
+      var type = new Set();
 
-      type.add(value.type);
-    }
+      for (var _i = 0, _Object$entries = Object.entries(response.data); _i < _Object$entries.length; _i++) {
+        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+            key = _Object$entries$_i[0],
+            value = _Object$entries$_i[1];
 
-    this.types = type; // replace item for menus
-
-    this.types.forEach(function (type, index) {
-      var menu = {
-        name: type,
-        recipies: []
-      };
-
-      for (var _i2 = 0, _Object$entries2 = Object.entries(_this.menu); _i2 < _Object$entries2.length; _i2++) {
-        var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
-            _key = _Object$entries2$_i[0],
-            _value = _Object$entries2$_i[1];
-
-        if (_value.type === type) {
-          menu.recipies.push(_value);
-        }
+        type.add(value.type.toLowerCase());
       }
 
-      _this.menus.push(menu);
-    });
-  },
-  mounted: function mounted() {
-    var _this2 = this;
+      _this.types = type; // replace item for menus
 
-    ymaps.ready(function () {
-      yamap = new ymaps.Map("map", {
-        center: _this2.addresses[0].center,
-        zoom: 17,
-        controls: []
-      });
+      _this.types.forEach(function (type, index) {
+        var menu = {
+          name: type.toLowerCase(),
+          recipies: []
+        };
 
-      _this2.addresses.forEach(function (address) {
-        var placemark = new ymaps.Placemark(address.center, {
-          balloonContent: address.name
-        }, {
-          iconLayout: "default#image",
-          iconImageHref: "images/map-marker.svg",
-          iconImageSize: [30, 42],
-          iconImageOffset: [0, 0]
-        });
-        yamap.geoObjects.add(placemark);
-      });
-    });
-    this.currentAddress = this.addresses[0]["long"];
-    this.address_long = this.addresses[0]["long"];
-    this.address_short = this.addresses[0]["short"];
-    this.address_time = this.addresses[0].time;
-    axios.post("http://91.143.171.231/getAddresses").then(function (response) {// console.log(response.data)
-    });
-    axios.post("http://91.143.171.231/getProducts").then(function (response) {// console.log(response.data)
-    });
-    setTimeout(function () {
-      $(".owl-carousel").owlCarousel({
-        items: 4,
-        margin: 10,
-        dots: false,
-        autoplayHoverPause: true,
-        responsiveClass: true,
-        stagePadding: 50,
-        responsive: {
-          0: {
-            items: 1,
-            nav: false
-          },
-          600: {
-            items: 2,
-            nav: true
-          },
-          800: {
-            items: 3,
-            nav: true
+        for (var _i2 = 0, _Object$entries2 = Object.entries(response.data); _i2 < _Object$entries2.length; _i2++) {
+          var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+              _key = _Object$entries2$_i[0],
+              _value = _Object$entries2$_i[1];
+
+          if (_value.type.toLowerCase() === type) {
+            menu.recipies.push(_value);
           }
         }
+
+        _this.menus.push(menu);
+      });
+
+      setTimeout(function () {
+        $(".owl-carousel").owlCarousel({
+          items: 4,
+          margin: 10,
+          dots: false,
+          nav: false,
+          autoplayHoverPause: true,
+          responsiveClass: true,
+          stagePadding: 50,
+          responsive: {
+            0: {
+              items: 1
+            },
+            600: {
+              items: 2
+            },
+            1000: {
+              items: 3
+            }
+          }
+        });
       });
     });
   },
   methods: {
     setAddress: function setAddress(address) {
-      this.currentAddress = address["short"];
-      this.address_long = address["long"];
-      this.address_short = address["short"];
-      this.address_time = address.time;
+      this.currentAddress = address.address_short;
+      this.address_long = address.address_long;
+      this.address_short = address.address_long;
+      this.address_time = address.time_work;
       yamap.setCenter(address.center, 17, {
         checkZoomRange: true
       });
     },
     filterMenu: function filterMenu() {
-      var _this3 = this;
+      var _this2 = this;
 
       return this.menu.filter(function (item) {
-        return item.type === _this3.selectedType;
+        return item.type === _this2.selectedType;
       });
     },
     handleScroll: function handleScroll(evt, el) {

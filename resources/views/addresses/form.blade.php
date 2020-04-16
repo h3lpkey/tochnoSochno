@@ -13,6 +13,14 @@
               @csrf
               @if(isset($address)) @method('PATCH') @endif
               <div class="form-group">
+                <label for="exampleFormControlInput1">координаты х</label>
+                <input type="text" class="form-control" name="address_x" @if(isset($address)) value="{{$address->address_x}}" @else value="{{old('address_x')}}" @endif>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">координаты y</label>
+                <input type="text" class="form-control" name="address_y" @if(isset($address)) value="{{$address->address_y}}" @else value="{{old('address_y')}}" @endif>
+              </div>
+              <div class="form-group">
                 <label for="exampleFormControlInput1">Короткий адрес</label>
                 <input type="text" class="form-control" name="address_short" @if(isset($address)) value="{{$address->address_short}}" @else value="{{old('address_short')}}" @endif>
               </div>

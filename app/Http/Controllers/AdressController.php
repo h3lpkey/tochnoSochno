@@ -21,6 +21,8 @@ class AdressController extends Controller
   public function store(Request $request)
   {
     $address = new Address();
+    $address->address_x = $request->address_x;
+    $address->address_y = $request->address_y;
     $address->address_short = $request->address_short;
     $address->address_long = $request->address_long;
     $address->time_work = $request->time_work;
@@ -36,6 +38,8 @@ class AdressController extends Controller
 
   public function update(Address $address, Request $request)
   {
+    $address->address_x = $request->address_x;
+    $address->address_y = $request->address_y;
     $address->address_short = $request->address_short;
     $address->address_long = $request->address_long;
     $address->time_work = $request->time_work;
