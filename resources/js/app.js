@@ -233,7 +233,7 @@ const app = new Vue({
       formData.append("phone", this.emailPhone);
       axios({
         method: "post",
-        url: "myurl",
+        url: "callback",
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       })
