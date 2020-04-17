@@ -129,11 +129,16 @@ const app = new Vue({
     emailSubject: "",
     emailEmail: "",
     emailPhone: "",
+    emailFile: "",
+    errorPhone: false,
+    typeDescription: "",
+    emailSendStatus: false,
+    emailTextFile: "Прикрепить документ (.pdf, .doc)",
   },
   mounted() {
     axios.post("http://91.143.171.231/getAddresses").then((response) => {
       this.addresses = response.data;
-      this.currentAddress = response.data[0].address_long;
+      this.currentAddress = response.data[0].address_short;
       this.address_long = response.data[0].address_long;
       this.address_short = response.data[0].address_short;
       this.address_time = response.data[0].time_work;
@@ -180,6 +185,7 @@ const app = new Vue({
         }
         this.menus.push(menu);
       });
+      this.setDescriptionType(this.selectedType);
       setTimeout(() => {
         $(".owl-carousel").owlCarousel({
           items: 4,
@@ -225,26 +231,48 @@ const app = new Vue({
       }
       return false;
     },
+    setFile(event) {
+      this.emailFile = event.target.value;
+      this.emailTextFile = event.target.files[0].name;
+    },
+    setBtn(status) {},
     sendEmail() {
-      const formData = new FormData();
-      formData.append("name", this.emailName);
-      formData.append("subject", this.emailSubject);
-      formData.append("email", this.emailEmail);
-      formData.append("phone", this.emailPhone);
-      axios({
-        method: "post",
-        url: "callback",
-        data: formData,
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-        .then(function (response) {
-          //handle success
-          console.log(response);
-        })
-        .catch(function (response) {
-          //handle error
-          console.log(response);
-        });
+      let status = false;
+      if (this.emailPhone.length <= 0) {
+        this.errorPhone = true;
+      } else {
+        this.errorPhone = false;
+        const formData = new FormData();
+        formData.append("name", this.emailName);
+        formData.append("subject", this.emailSubject);
+        formData.append("email", this.emailEmail);
+        formData.append("phone", this.emailPhone);
+        formData.append("file", this.emailFile);
+
+        if (!this.emailSendStatus) {
+          axios({
+            method: "post",
+            url: "callback",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+          })
+            .then((response) => {
+              if (response.status == 200) {
+                this.emailSendStatus = true;
+              }
+            })
+            .catch(function (response) {
+              console.log(response);
+            });
+        }
+      }
+    },
+    setDescriptionType(type) {
+      this.menus.forEach((item) => {
+        if (item.recipies[0].type === type) {
+          this.typeDescription = item.recipies[0].description_type;
+        }
+      });
     },
   },
 });

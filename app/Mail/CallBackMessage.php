@@ -20,10 +20,11 @@ class CallBackMessage extends Mailable
      */
     public function __construct($request)
     {
-        $this->data['name'] = $request->name;
-        $this->data['subject'] = $request->subject;
-        $this->data['email'] = $request->email;
-        $this->data['phone'] = $request->phone;
+        $this->data['name'] = ($request->name) ? $request->name : "";
+        $this->data['subject'] = ($request->subject) ? $request->subject : "";
+        $this->data['email'] = ($request->email) ? $request->email : "";
+        $this->data['phone'] = ($request->phone) ? $request->phone : "";
+        // $this->data['file'] = ($request->file) ? $request->file : "";
     }
 
     /**
@@ -33,6 +34,7 @@ class CallBackMessage extends Mailable
      */
     public function build()
     {
+        // return $this->view('emails.callback')->attach(($this->data['file']) ? $this->data['file'] : "");
         return $this->view('emails.callback');
     }
 }

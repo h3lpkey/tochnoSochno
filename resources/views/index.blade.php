@@ -7,28 +7,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=121cc8e0-79c6-4386-bf51-3c1b78a1e585" type="text/javascript"></script>
   <title>Laravel</title>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m, e, t, r, i, k, a) {
+      m[i] = m[i] || function() {
+        (m[i].a = m[i].a || []).push(arguments)
+      };
+      m[i].l = 1 * new Date();
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(61997143, "init", {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true
+    });
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/61997143" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163814235-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-163814235-1');
+  </script>
+
 </head>
 
 <body>
   <div id="app">
     <section class="section section-head" id="section-head">
       <div class="wrapper">
-        <div class="header-reaplcer" v-show="replacer || showMenu"></div>
+        <div class="header-replacer" v-show="replacer || showMenu"></div>
+        <div class="header-background" v-show="replacer"></div>
         <div class="header" v-bind:class="{ 'header-fixed': replacer || showMenu, 'header-opened': showMenu }" v-scroll="handleScroll">
           <div class="menu-btn" @click="showMenu = !showMenu">
             <img src="images/menu.svg" alt="">
           </div>
           <div class="logo">
-            <img src="images/logo-cirlce.svg" alt="logo" />
+            <a href="#section-head"><img src="images/logo-cirlce.svg" alt="logo" /></a>
           </div>
           <nav class="menu" v-bind:class="{ 'menu-mobile': showMenu }">
             <a href="#section-menu">меню</a>
             <a href="#section-deliver">доставка</a>
             <a href="#section-foodtrack">фудтрак</a>
-            <a href="#section-cashback">кэшбек</a>
+            <a href="#section-cashback">кэшбэк</a>
             <a href="#section-contacts">контакты</a>
           </nav>
-          <a href="#" class="instagram">
+          <a href="https://www.instagram.com/tochnosochno/?hl=ru" class="instagram">
             <img src="images/instagram.svg" alt="" />
             <p>instagram</p>
           </a>
@@ -41,12 +76,12 @@
           <p>Заказать</p>
         </div>
         <div class="bottom-buttons">
-          <div class="city">
+          <a href="#section-contacts" class="city">
             <img src="images/point.svg" alt="" />
             <p>екатеринбург</p>
-          </div>
+          </a>
           <a href="#section-menu"><img src="images/bottom_btn.svg" alt="" /></a>
-          <a href="#" class="instagram">
+          <a href="https://www.instagram.com/tochnosochno/?hl=ru" class="instagram">
             <p>instagram</p>
             <img src="images/instagram.svg" alt="" />
           </a>
@@ -87,16 +122,16 @@
           блюда, приготовленные мастерами своего дела
         </p>
         <div class="menu-select">
-          <div class="item" v-for="type in types" @click="selectedType = type" :class="{ 'item-active': selectedType == type }">@{{type}}</div>
+          <div class="item" v-for="type in types" @click="selectedType = type; setDescriptionType(type)" :class="{ 'item-active': selectedType == type }">@{{type}}</div>
         </div>
         <p class="menu-text">
-          Подается в лаваше, в пшеничной лепешке или в открытом виде
+          @{{typeDescription || "    "}}
         </p>
         <div class="menu-wrapper owl-carousel owl-theme" :dots="false" v-for="(menu, index) in menus" v-show="menu.name === selectedType">
           <div class="menu-background" v-for="(item, index) in menu.recipies" :key="item.name">
             <div class="menu-item">
-              <img class="menu-item-img" :src="item.src" :alt="item.name" />
-              <p class="menu-item-title">@{{item.name}}</p>
+              <img class="menu-item-img" :src="item.src" :alt="item.public_name" />
+              <p class="menu-item-title">@{{item.public_name}}</p>
               <p class="menu-item-text">@{{item.description}}</p>
               <p class="menu-item-weight">@{{item.gramms}}</p>
               <p class="menu-item-price">@{{item.price}} РУБ</p>
@@ -104,7 +139,9 @@
           </div>
         </div>
         <div class="btn-wrapper btn-wrapper__alw">
-          <a href="#section-deliver"><button>перейти к заказу</button></a>
+          <a href="#section-deliver">
+            <button>перейти к заказу</button>
+          </a>
         </div>
       </div>
     </section>
@@ -116,10 +153,12 @@
             Быстрые ребята из «Яндекс.Еды» и «DeliveryClub» доставят наши вкусные блюда и освежающие напитки к тебе домой или на работу
           </p>
           <div class="deliver-buttons">
-            <div class="btn-wrapper btn-wrapper__out">
-              <button>яндекс еда</button>
+            <div class="btn-wrapper btn-wrapper__out mobile">
+              <a href="https://eda.yandex/restaurant/tochno_sochnor_8_marta_145">
+                <button>яндекс еда</button>
+              </a>
             </div>
-            <div class="btn-wrapper btn-wrapper__out">
+            <div class="btn-wrapper btn-wrapper__out mobile">
               <button>delivery club</button>
             </div>
           </div>
@@ -142,9 +181,14 @@
             <input class="input" type="text" v-model="emailName" placeholder="Ваше имя" />
             <input class="input" type="text" v-model="emailSubject" placeholder="Тема мероприятия" />
             <input class="input" type="text" v-model="emailEmail" placeholder="Email" />
-            <input class="input" type="text" v-model="emailPhone" placeholder="Телефон" />
+            <input class="input star" v-bind:class="{ 'required': errorPhone }" type="text" v-model="emailPhone" placeholder="Телефон *" />
+            <p class="fileText">
+              @{{emailTextFile}}
+              <input class="file" type="file" @change="setFile" />
+            </p>
             <div class="btn-wrapper btn-wrapper__alw" @click="sendEmail">
-              <button>отправить заявку</button>
+              <button v-if="!emailSendStatus">отправить заявку</button>
+              <button v-else>Спасибо!</button>
             </div>
           </div>
         </div>
@@ -152,7 +196,7 @@
     </section>
     <section class="section section-cashback" id="section-cashback">
       <div class="wrapper">
-        <h1 class="title">кэшбек</h1>
+        <h1 class="title">кэшбэк</h1>
         <div class="cashback-wrapper-list">
           <ul class="list-first">
             <li class="list-item">
@@ -184,12 +228,12 @@
               <li class="list-item">
                 <div class="icon"></div>
                 <div class="list-item_shadow"></div>
-                7% кэшбек на первую покупку
+                7% кэшбэк на первую покупку
               </li>
               <li class="list-item">
                 <div class="icon"></div>
                 <div class="list-item_shadow"></div>
-                3% кэшбек на все покупки
+                3% кэшбэк на все покупки
               </li>
               <li class="list-item">
                 <div class="icon"></div>
@@ -223,7 +267,7 @@
               </div>
             </div>
             <p class="address">
-              г. Екатеринбург @{{address_short}}
+              г. Екатеринбург, @{{address_long}}
             </p>
             <p class="time-title">Часы работы:</p>
             <p class="time-text">
@@ -244,20 +288,18 @@
             <a href="#section-menu">меню</a>
             <a href="#section-deliver">доставка</a>
             <a href="#section-foodtrack">фудтрак</a>
-            <a href="#section-cashback">кэшбек</a>
+            <a href="#section-cashback">кэшбэк</a>
             <a href="#section-contacts">контакты</a>
           </nav>
           <nav class="footer-links">
-            <a href="#">пользовательское соглашение</a>
-            <a href="#">сотрудничество</a>
-            <a href="#">обратная связь</a>
+            <a href="mailto:tochnosochno@mail.ru">tochnosochno@mail.ru</a>
           </nav>
           <div class="footer-btns">
-            <div class="scroll-top">
+            <div class="scroll-top" v-bind:class="{ 'fixed-scroll': replacer }">
               <a href="#section-head"><img src="images/bottom_btn.svg" alt="" /></a>
             </div>
             <a class="footer-phone" href="tel:+73432195888">+7 (343) 219-58-88</a>
-            <a href="#" class="instagram">
+            <a href="https://www.instagram.com/tochnosochno/?hl=ru" class="instagram">
               <p>instagram</p>
               <img src="images/instagram__red.svg" alt="" />
             </a>
