@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8">
@@ -274,9 +274,9 @@
               @{{address_time}}
             </p>
           </div>
-          <h2>a</h2>
-          <div class="map-wrapper">
-            <div v-if="showMap" id="map"></div>
+          <div class="map-wrapper" v-if="showMap">
+            <h1>тут карта</h1>
+            <div id="map" ></div>
           </div>
         </div>
       </div>
