@@ -144,27 +144,27 @@ const app = new Vue({
       this.address_short = response.data[0].address_short;
       this.address_time = response.data[0].time_work;
 
-      ymaps.ready(() => {
-        yamap = new ymaps.Map("map", {
-          center: [response.data[0].address_x, response.data[0].address_y],
-          zoom: 17,
-          controls: [],
-        });
-        this.addresses.forEach((address) => {
-          const placemark = new ymaps.Placemark(
-            [address.address_x, address.address_y],
-            { balloonContent: address.address_short },
-            {
-              iconLayout: "default#image",
-              iconImageHref: "images/map-marker.svg",
-              iconImageSize: [30, 42],
-              iconImageOffset: [0, 0],
-            }
-          );
-          yamap.geoObjects.add(placemark);
-        });
-      });
-      this.showMap = true;
+      // ymaps.ready(() => {
+      //   yamap = new ymaps.Map("map", {
+      //     center: [response.data[0].address_x, response.data[0].address_y],
+      //     zoom: 17,
+      //     controls: [],
+      //   });
+      //   this.addresses.forEach((address) => {
+      //     const placemark = new ymaps.Placemark(
+      //       [address.address_x, address.address_y],
+      //       { balloonContent: address.address_short },
+      //       {
+      //         iconLayout: "default#image",
+      //         iconImageHref: "images/map-marker.svg",
+      //         iconImageSize: [30, 42],
+      //         iconImageOffset: [0, 0],
+      //       }
+      //     );
+      //     yamap.geoObjects.add(placemark);
+      //   });
+      // });
+      // this.showMap = true;
     });
     axios.post("https://tochnosochno.ru/getProducts").then((response) => {
       // get types menuF
@@ -213,6 +213,10 @@ const app = new Vue({
     });
   },
   methods: {
+    test() {
+      console.log(this.showMap)
+      this.showMap = true;
+    },
     setAddress(address) {
       this.currentAddress = address.address_short;
       this.address_long = address.address_long;

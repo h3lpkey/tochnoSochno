@@ -251,7 +251,7 @@
     </section>
     <section class="section section-contacts" id="section-contacts">
       <div class="wrapper">
-        <h1 class="title">контакты</h1>
+        <h1 class="title" @click="test">контакты</h1>
         <div class="contact-wrapper">
           <div class="contacts">
             <h3 class="title-contact">наши адреса:</h3>
@@ -274,8 +274,10 @@
               @{{address_time}}
             </p>
           </div>
-          <div class="map-wrapper">
-            <div id="map" v-if="showMap"></div>
+          <h2>a</h2>
+          <div class="map-wrapper" v-if="showMap">
+            <h1>тут карта</h1>
+            <div id="map" ></div>
           </div>
         </div>
       </div>
