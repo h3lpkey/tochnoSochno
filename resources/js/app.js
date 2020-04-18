@@ -145,26 +145,27 @@ const app = new Vue({
       this.address_short = response.data[0].address_short;
       this.address_time = response.data[0].time_work;
 
-      ymaps.ready(() => {
-        yamap = new ymaps.Map("map", {
-          center: [response.data[0].address_x, response.data[0].address_y],
-          zoom: 17,
-          controls: [],
-        });
-        this.addresses.forEach((address) => {
-          const placemark = new ymaps.Placemark(
-            [address.address_x, address.address_y],
-            { balloonContent: address.address_short },
-            {
-              iconLayout: "default#image",
-              iconImageHref: "images/map-marker.svg",
-              iconImageSize: [30, 42],
-              iconImageOffset: [0, 0],
-            }
-          );
-          yamap.geoObjects.add(placemark);
-        });
-      });
+      // ymaps.ready(() => {
+      //   yamap = new ymaps.Map("map", {
+      //     center: [response.data[0].address_x, response.data[0].address_y],
+      //     zoom: 17,
+      //     controls: [],
+      //   });
+      //   this.addresses.forEach((address) => {
+      //     const placemark = new ymaps.Placemark(
+      //       [address.address_x, address.address_y],
+      //       { balloonContent: address.address_short },
+      //       {
+      //         iconLayout: "default#image",
+      //         iconImageHref: "images/map-marker.svg",
+      //         iconImageSize: [30, 42],
+      //         iconImageOffset: [0, 0],
+      //       }
+      //     );
+      //     yamap.geoObjects.add(placemark);
+      //   });
+      // });
+      console.log("show map")
       thisScope.showMap = true;
     });
     axios.post("https://tochnosochno.ru/getProducts").then((response) => {
