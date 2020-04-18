@@ -124,6 +124,7 @@ const app = new Vue({
     map: {},
     addresses: [],
     showMenu: false,
+    showMap: false,
     replacer: false,
     emailName: "",
     emailSubject: "",
@@ -163,6 +164,7 @@ const app = new Vue({
           yamap.geoObjects.add(placemark);
         });
       });
+      this.showMap = true;
     });
     axios.post("https://tochnosochno.ru/getProducts").then((response) => {
       // get types menuF

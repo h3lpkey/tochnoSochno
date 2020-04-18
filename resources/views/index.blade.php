@@ -275,7 +275,7 @@
             </p>
           </div>
           <div class="map-wrapper">
-            <div id="map"></div>
+            <div id="map" v-if="showMap"></div>
           </div>
         </div>
       </div>
