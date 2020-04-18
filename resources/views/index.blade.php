@@ -44,12 +44,12 @@
 </head>
 
 <body>
-  <div id="app">
+  <div id="app-tochno">
     <section class="section section-head" id="section-head">
       <div class="wrapper">
         <div class="header-replacer" v-show="replacer || showMenu"></div>
         <div class="header-background" v-show="replacer"></div>
-        <div class="header" v-bind:class="{ 'header-fixed': replacer || showMenu, 'header-opened': showMenu }">
+        <div class="header" v-bind:class="{ 'header-fixed': replacer || showMenu, 'header-opened': showMenu }" v-scroll="handleScroll">
           <div class="menu-btn" @click="showMenu = !showMenu">
             <img src="images/menu.svg" alt="">
           </div>
@@ -275,7 +275,7 @@
             </p>
           </div>
           <div class="map-wrapper" v-if="showMap">
-            <div id="map" ></div>
+            <div id="map"></div>
           </div>
         </div>
       </div>
