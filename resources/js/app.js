@@ -21,7 +21,6 @@ const app = new Vue({
   data: {
     showAddressBox: false,
     currentAddress: "",
-    menu: menu,
     selectedType: "шашлык",
     types: [],
     menus: [],
