@@ -1,7 +1,7 @@
 import "./bootstrap";
 import "owl.carousel";
 
-// window.Vue = require("vue");
+window.Vue = require("vue");
 
 const menu = [
   {
@@ -98,16 +98,16 @@ const menu = [
 
 let yamap;
 
-// Vue.directive("scroll", {
-//   inserted: function (el, binding) {
-//     let f = function (evt) {
-//       if (binding.value(evt, el)) {
-//         window.removeEventListener("scroll", f);
-//       }
-//     };
-//     window.addEventListener("scroll", f);
-//   },
-// });
+Vue.directive("scroll", {
+  inserted: function (el, binding) {
+    let f = function (evt) {
+      if (binding.value(evt, el)) {
+        window.removeEventListener("scroll", f);
+      }
+    };
+    window.addEventListener("scroll", f);
+  },
+});
 
 const app = new Vue({
   el: "#app",
