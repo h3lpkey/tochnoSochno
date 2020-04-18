@@ -46017,7 +46017,7 @@ var app = new Vue({
   mounted: function mounted() {
     var _this = this;
 
-    axios.post("http://91.143.171.231/getAddresses").then(function (response) {
+    axios.post("https://tochnosochno.ru/getAddresses").then(function (response) {
       _this.addresses = response.data;
       _this.currentAddress = response.data[0].address_short;
       _this.address_long = response.data[0].address_long;
@@ -46043,7 +46043,7 @@ var app = new Vue({
         });
       });
     });
-    axios.post("http://91.143.171.231/getProducts").then(function (response) {
+    axios.post("https://tochnosochno.ru/getProducts").then(function (response) {
       // get types menuF
       var type = new Set();
 

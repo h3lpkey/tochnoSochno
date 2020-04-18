@@ -136,7 +136,7 @@ const app = new Vue({
     emailTextFile: "Прикрепить документ (.pdf, .doc)",
   },
   mounted() {
-    axios.post("http://91.143.171.231/getAddresses").then((response) => {
+    axios.post("https://tochnosochno.ru/getAddresses").then((response) => {
       this.addresses = response.data;
       this.currentAddress = response.data[0].address_short;
       this.address_long = response.data[0].address_long;
@@ -164,7 +164,7 @@ const app = new Vue({
         });
       });
     });
-    axios.post("http://91.143.171.231/getProducts").then((response) => {
+    axios.post("https://tochnosochno.ru/getProducts").then((response) => {
       // get types menuF
       let type = new Set();
       for (let [key, value] of Object.entries(response.data)) {
