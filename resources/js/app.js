@@ -137,6 +137,7 @@ const app = new Vue({
     emailTextFile: "Прикрепить документ (.pdf, .doc)",
   },
   mounted() {
+    let thisScope = this;
     axios.post("https://tochnosochno.ru/getAddresses").then((response) => {
       this.addresses = response.data;
       this.currentAddress = response.data[0].address_short;
@@ -164,7 +165,7 @@ const app = new Vue({
           yamap.geoObjects.add(placemark);
         });
       });
-      this.showMap = true;
+      thisScope.showMap = true;
     });
     axios.post("https://tochnosochno.ru/getProducts").then((response) => {
       // get types menuF
@@ -213,10 +214,6 @@ const app = new Vue({
     });
   },
   methods: {
-    test() {
-      console.log(this.showMap)
-      this.showMap = true;
-    },
     setAddress(address) {
       this.currentAddress = address.address_short;
       this.address_long = address.address_long;

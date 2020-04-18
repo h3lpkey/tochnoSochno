@@ -251,7 +251,7 @@
     </section>
     <section class="section section-contacts" id="section-contacts">
       <div class="wrapper">
-        <h1 class="title" @click="test">контакты</h1>
+        <h1 class="title">контакты</h1>
         <div class="contact-wrapper">
           <div class="contacts">
             <h3 class="title-contact">наши адреса:</h3>
@@ -275,8 +275,8 @@
             </p>
           </div>
           <h2>a</h2>
-          <div class="map-wrapper" v-if="showMap">
-            <div id="map" ></div>
+          <div class="map-wrapper">
+            <div v-if="showMap" id="map"></div>
           </div>
         </div>
       </div>
