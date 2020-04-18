@@ -49,7 +49,7 @@
       <div class="wrapper">
         <div class="header-replacer" v-show="replacer || showMenu"></div>
         <div class="header-background" v-show="replacer"></div>
-        <div class="header" v-bind:class="{ 'header-fixed': replacer || showMenu, 'header-opened': showMenu }" v-scroll="handleScroll">
+        <div class="header" v-bind:class="{ 'header-fixed': replacer || showMenu, 'header-opened': showMenu }">
           <div class="menu-btn" @click="showMenu = !showMenu">
             <img src="images/menu.svg" alt="">
           </div>
@@ -275,7 +275,6 @@
             </p>
           </div>
           <div class="map-wrapper" v-if="showMap">
-            <h1>тут карта</h1>
             <div id="map" ></div>
           </div>
         </div>

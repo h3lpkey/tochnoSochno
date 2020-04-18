@@ -3,111 +3,18 @@ import "owl.carousel";
 
 window.Vue = require("vue");
 
-const menu = [
-  {
-    image: "images/menu1.jpg",
-    title: "шаурма",
-    type: "шаурма",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "шашлык",
-    type: "шашлык",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "шашлык",
-    type: "шашлык",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "шашлык",
-    type: "шашлык",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "шашлык",
-    type: "шашлык",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "bbq",
-    type: "bbq",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "bbq",
-    type: "bbq",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "бургеры",
-    type: "бургеры",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "бургеры",
-    type: "бургеры",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-  {
-    image: "images/menu1.jpg",
-    title: "бургеры",
-    type: "бургеры",
-    text:
-      "Куриное филе жарим на углях, добавляем маринованный лук с пряной морковкой, перцем халапеньо, картофелем барбекю и томатным соусом.",
-    weight: "130/100/100/80 гр",
-    price: "210 РУБ",
-  },
-];
-
 let yamap;
 
-Vue.directive("scroll", {
-  inserted: function (el, binding) {
-    let f = function (evt) {
-      if (binding.value(evt, el)) {
-        window.removeEventListener("scroll", f);
-      }
-    };
-    window.addEventListener("scroll", f);
-  },
-});
+// Vue.directive("scroll", {
+//   inserted: function (el, binding) {
+//     let f = function (evt) {
+//       if (binding.value(evt, el)) {
+//         window.removeEventListener("scroll", f);
+//       }
+//     };
+//     window.addEventListener("scroll", f);
+//   },
+// });
 
 const app = new Vue({
   el: "#app",
@@ -138,81 +45,80 @@ const app = new Vue({
   },
   mounted() {
     let thisScope = this;
-    axios.post("https://tochnosochno.ru/getAddresses").then((response) => {
-      this.addresses = response.data;
-      this.currentAddress = response.data[0].address_short;
-      this.address_long = response.data[0].address_long;
-      this.address_short = response.data[0].address_short;
-      this.address_time = response.data[0].time_work;
+    // axios.post("https://tochnosochno.ru/getAddresses").then((response) => {
+    //   this.addresses = response.data;
+    //   this.currentAddress = response.data[0].address_short;
+    //   this.address_long = response.data[0].address_long;
+    //   this.address_short = response.data[0].address_short;
+    //   this.address_time = response.data[0].time_work;
 
-      // ymaps.ready(() => {
-      //   yamap = new ymaps.Map("map", {
-      //     center: [response.data[0].address_x, response.data[0].address_y],
-      //     zoom: 17,
-      //     controls: [],
-      //   });
-      //   this.addresses.forEach((address) => {
-      //     const placemark = new ymaps.Placemark(
-      //       [address.address_x, address.address_y],
-      //       { balloonContent: address.address_short },
-      //       {
-      //         iconLayout: "default#image",
-      //         iconImageHref: "images/map-marker.svg",
-      //         iconImageSize: [30, 42],
-      //         iconImageOffset: [0, 0],
-      //       }
-      //     );
-      //     yamap.geoObjects.add(placemark);
+    //   ymaps.ready(() => {
+    //     yamap = new ymaps.Map("map", {
+    //       center: [response.data[0].address_x, response.data[0].address_y],
+    //       zoom: 17,
+    //       controls: [],
+    //     });
+    //     this.addresses.forEach((address) => {
+    //       const placemark = new ymaps.Placemark(
+    //         [address.address_x, address.address_y],
+    //         { balloonContent: address.address_short },
+    //         {
+    //           iconLayout: "default#image",
+    //           iconImageHref: "images/map-marker.svg",
+    //           iconImageSize: [30, 42],
+    //           iconImageOffset: [0, 0],
+    //         }
+    //       );
+    //       yamap.geoObjects.add(placemark);
+    //     });
+    //   });
+    //   thisScope.showMap = true;
+    // });
+    // axios.post("https://tochnosochno.ru/getProducts").then((response) => {
+      // get types menuF
+      // let type = new Set();
+      // for (let [key, value] of Object.entries(response.data)) {
+      //   type.add(value.type.toLowerCase());
+      // }
+      // this.types = type;
+
+      // // replace item for menus
+      // this.types.forEach((type, index) => {
+      //   let menu = {
+      //     name: type.toLowerCase(),
+      //     recipies: [],
+      //   };
+      //   for (let [key, value] of Object.entries(response.data)) {
+      //     if (value.type.toLowerCase() === type) {
+      //       menu.recipies.push(value);
+      //     }
+      //   }
+      //   this.menus.push(menu);
+      // });
+      // this.setDescriptionType(this.selectedType);
+      // setTimeout(() => {
+      //   $(".owl-carousel").owlCarousel({
+      //     items: 4,
+      //     margin: 10,
+      //     dots: false,
+      //     nav: false,
+      //     autoplayHoverPause: true,
+      //     responsiveClass: true,
+      //     stagePadding: 50,
+      //     responsive: {
+      //       0: {
+      //         items: 1,
+      //       },
+      //       600: {
+      //         items: 2,
+      //       },
+      //       1000: {
+      //         items: 3,
+      //       },
+      //     },
       //   });
       // });
-      console.log("show map")
-      thisScope.showMap = true;
-    });
-    axios.post("https://tochnosochno.ru/getProducts").then((response) => {
-      // get types menuF
-      let type = new Set();
-      for (let [key, value] of Object.entries(response.data)) {
-        type.add(value.type.toLowerCase());
-      }
-      this.types = type;
-
-      // replace item for menus
-      this.types.forEach((type, index) => {
-        let menu = {
-          name: type.toLowerCase(),
-          recipies: [],
-        };
-        for (let [key, value] of Object.entries(response.data)) {
-          if (value.type.toLowerCase() === type) {
-            menu.recipies.push(value);
-          }
-        }
-        this.menus.push(menu);
-      });
-      this.setDescriptionType(this.selectedType);
-      setTimeout(() => {
-        $(".owl-carousel").owlCarousel({
-          items: 4,
-          margin: 10,
-          dots: false,
-          nav: false,
-          autoplayHoverPause: true,
-          responsiveClass: true,
-          stagePadding: 50,
-          responsive: {
-            0: {
-              items: 1,
-            },
-            600: {
-              items: 2,
-            },
-            1000: {
-              items: 3,
-            },
-          },
-        });
-      });
-    });
+    // });
   },
   methods: {
     setAddress(address) {
@@ -239,7 +145,6 @@ const app = new Vue({
       this.emailFile = event.target.value;
       this.emailTextFile = event.target.files[0].name;
     },
-    setBtn(status) {},
     sendEmail() {
       let status = false;
       if (this.emailPhone.length <= 0) {
