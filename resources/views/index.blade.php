@@ -287,11 +287,11 @@
         <div class="footer-wrapper">
           <img class="logo-footer" src="images/logo-cirlce.svg" alt="logo" />
           <nav class="footer-menu">
-            <a href="#section-menu">меню</a>
-            <a href="#section-deliver">доставка</a>
-            <a href="#section-foodtrack">фудтрак</a>
-            <a href="#section-cashback">кэшбэк</a>
-            <a href="#section-contacts">контакты</a>
+            <a href="#section-menu">Меню</a>
+            <a href="#section-deliver">Доставка</a>
+            <a href="#section-foodtrack">Фудтрак</a>
+            <a href="#section-cashback">Кэшбэк</a>
+            <a href="#section-contacts">Контакты</a>
           </nav>
           <nav class="footer-links">
             <a href="mailto:tochnosochno@mail.ru">tochnosochno@mail.ru</a>
