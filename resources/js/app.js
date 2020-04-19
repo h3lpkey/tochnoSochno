@@ -45,7 +45,7 @@ new Vue({
   },
   mounted() {
     let thisScope = this;
-    axios.post("http://91.143.171.231/getAddresses").then((response) => {
+    axios.post("https://tochnosochno.ru/getAddresses").then((response) => {
       this.addresses = response.data;
       this.currentAddress = response.data[0].address_short;
       this.address_long = response.data[0].address_long;
@@ -74,7 +74,7 @@ new Vue({
       });
       thisScope.showMap = true;
     });
-    axios.post("http://91.143.171.231/getProducts").then((response) => {
+    axios.post("https://tochnosochno.ru/getProducts").then((response) => {
       // get types menu
       let type = new Set();
       for (let [key, value] of Object.entries(response.data)) {
