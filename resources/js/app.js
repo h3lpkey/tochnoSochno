@@ -40,6 +40,7 @@ new Vue({
     errorPhone: false,
     typeDescription: "",
     emailSendStatus: false,
+    emailButton: "отправить заявку",
     emailTextFile: "Прикрепить документ (.pdf, .doc)",
   },
   mounted() {
@@ -125,7 +126,7 @@ new Vue({
       this.address_long = address.address_long;
       this.address_short = address.address_long;
       this.address_time = address.time_work;
-      yamap.setCenter(address.center, 17, {
+      yamap.setCenter([address.address_x, address.address_y], 17, {
         checkZoomRange: true,
       });
     },
@@ -145,7 +146,7 @@ new Vue({
       this.emailTextFile = event.target.files[0].name;
     },
     sendEmail() {
-      let status = false;
+      this.emailButton = "Секундочку...";
       if (this.emailPhone.length <= 0) {
         this.errorPhone = true;
       } else {
@@ -169,9 +170,7 @@ new Vue({
                 this.emailSendStatus = true;
               }
             })
-            .catch(function (response) {
-              console.log(response);
-            });
+            .catch(function (response) {});
         }
       }
     },

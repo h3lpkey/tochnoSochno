@@ -187,7 +187,7 @@
               <input class="file" type="file" @change="setFile" />
             </p>
             <div class="btn-wrapper btn-wrapper__alw" @click="sendEmail">
-              <button v-if="!emailSendStatus">отправить заявку</button>
+              <button v-if="!emailSendStatus">@{{emailButton}}</button>
               <button v-else>Спасибо!</button>
             </div>
           </div>
