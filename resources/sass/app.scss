@@ -70,14 +70,12 @@ a {
 }
 .mobile {
   @media (max-width: $media-tablet) {
-    background: linear-gradient(to right, #ff6b00, #ff0000);
+    background: linear-gradient(to right, #ff6b00, #ff0000)!important;
   }
   button {
     @media (max-width: $media-tablet) {
-      width: 352px;
       margin-top: -1px;
-      margin-left: -1px;
-      background: black;
+      background: #060606;
       padding-top: 18px;
       padding-bottom: 16px;
     }
@@ -351,9 +349,11 @@ a {
       font-size: 24px;
       text-align: center;
       max-width: 170px;
-      min-width: 100px;
       @media (max-width: $media-tablet) {
-        font-size: 14px;
+        font-size: 12px;
+      }
+      @media (max-width: 400px) {
+        width: 70px;
       }
       .list-item_text {
         @media (max-width: $media-tablet) {
@@ -451,13 +451,23 @@ a {
       min-width: 210px;
       max-width: 350px;
       height: 470px;
-      background: linear-gradient(to right, #ff6b00, #ff0000);
+      // background: linear-gradient(to right, #ff6b00, #ff0000);
+      &:hover {
+        background: linear-gradient(to right, #ff6b00, #ff0000);
+      }
+      &-selected {
+        background: linear-gradient(to right, #ff6b00, #ff0000);
+      }
       .menu-item {
         display: flex;
         flex-direction: column;
         cursor: pointer;
         background: #060606;
         height: 100%;
+        @media (max-width: $media-tablet) {
+          background: #181616;
+        }
+        
       }
       .menu-item-img {
         width: 100%;
@@ -494,21 +504,20 @@ a {
     }
     .owl-nav {
       position: absolute;
-      top: 0;
+      top: 25%;
       left: 0;
       width: 100%;
-      height: 100%;
       margin: 0;
-      z-index: 1;
+      z-index: 1000;
       .owl-prev {
         background-color: transparent;
-        left: -70px;
+        left: 0;
         transform: rotate(90deg);
         position: absolute;
         width: 50px;
         height: 50px;
-        top: 50%;
         background-size: contain;
+        opacity: 0.3;
         cursor: pointer;
         color: transparent;
         background-image: url("../img/bottom_btn.svg");
@@ -522,16 +531,19 @@ a {
           background-repeat: no-repeat;
         }
       }
+      .owl-prev.disabled {
+        display: none;
+      }
       .owl-next {
         background-color: transparent;
-        right: -60px;
+        right: 0;
         background-image: url("../img/bottom_btn.svg");
         transform: rotate(-90deg);
         position: absolute;
         width: 50px;
         height: 50px;
-        top: 50%;
         background-size: contain;
+        opacity: 0.3;
         cursor: pointer;
         color: transparent;
         background-image: url("../img/bottom_btn.svg");
@@ -544,6 +556,9 @@ a {
           background-image: url("../img/bottom_btn.svg");
           background-repeat: no-repeat;
         }
+      }
+      .owl-next.disabled {
+        display: none;
       }
     }
     .owl-item {
@@ -601,8 +616,9 @@ a {
       width: 350px;
       height: 66px;
       @media (max-width: $media-tablet) {
+        width: 100%;
         margin-bottom: 25px;
-        margin-right: 10px;
+        margin-right: 20px;
       }
     }
   }
@@ -1017,7 +1033,7 @@ a {
         text-transform: uppercase;
         @media (max-width: $media-tablet) {
           text-align: center;
-          color: #B4B4B4;
+          color: #b4b4b4;
         }
         &:hover {
           color: white;

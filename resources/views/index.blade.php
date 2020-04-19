@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="/css/app.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=121cc8e0-79c6-4386-bf51-3c1b78a1e585" type="text/javascript"></script>
-  <title>Laravel</title>
+  <title>ТочноСочно</title>
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
     (function(m, e, t, r, i, k, a) {
@@ -130,7 +130,7 @@
           @{{typeDescription || "    "}}
         </p>
         <div class="menu-wrapper owl-carousel owl-theme" :dots="false" v-for="(menu, index) in menus" v-show="menu.name === selectedType">
-          <div class="menu-background" v-for="(item, index) in menu.recipies" :key="item.name">
+          <div class="menu-background" v-for="(item, index) in menu.recipies" :key="item.name" v-bind:class="{ 'menu-background-selected': selectItem == item.name }" @click="selectItem = item.name">
             <div class="menu-item">
               <img class="menu-item-img" :src="item.src" :alt="item.public_name" />
               <p class="menu-item-title">@{{item.public_name}}</p>
@@ -190,7 +190,7 @@
             </p>
             <div class="btn-wrapper btn-wrapper__alw" @click="sendEmail">
               <button v-if="!emailSendStatus">@{{emailButton}}</button>
-              <button v-else>Спасибо!</button>
+              <button v-else>отправлено</button>
             </div>
           </div>
         </div>

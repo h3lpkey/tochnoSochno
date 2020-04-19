@@ -38,6 +38,7 @@ new Vue({
     emailPhone: "",
     emailFile: "",
     errorPhone: false,
+    selectItem: "",
     typeDescription: "",
     emailSendStatus: false,
     emailButton: "отправить заявку",
@@ -46,7 +47,7 @@ new Vue({
   mounted() {
     let thisScope = this;
     if (window.innerWidth < 1024) {
-      document.getElementById('section-head').style.height = window.innerHeight + "px";
+      document.getElementById("section-head").style.height = window.innerHeight + "px";
     }
     axios.post("getAddresses").then((response) => {
       this.addresses = response.data;
@@ -105,12 +106,12 @@ new Vue({
           margin: 10,
           dots: false,
           nav: false,
-          autoplayHoverPause: true,
           responsiveClass: true,
           stagePadding: 50,
           responsive: {
             0: {
               items: 1,
+              nav: true,
             },
             600: {
               items: 2,
