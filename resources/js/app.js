@@ -45,7 +45,6 @@ new Vue({
   },
   mounted() {
     let thisScope = this;
-    console.log('set height')
     if (window.innerWidth < 1024) {
       document.getElementById('section-head').style.height = window.innerHeight + "px";
     }
