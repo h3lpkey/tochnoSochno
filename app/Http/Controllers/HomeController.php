@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Address;
 use App\Mail\CallBackMessage;
+use App\Mail\SendFormFromWebsite;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -38,7 +39,7 @@ class HomeController extends Controller
 
   public function callback(Request $request)
   {
-    Mail::to(env('ADMIN_MAIL'))->send(new CallBackMessage($request));
+    Mail::to(env('ADMIN_MAIL'))->send(new SendFormFromWebsite($request));
 
     return $this->jsonResponse($data['status'] = 'success');
   }

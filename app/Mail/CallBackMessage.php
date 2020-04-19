@@ -24,7 +24,7 @@ class CallBackMessage extends Mailable
         $this->data['subject'] = ($request->subject) ? $request->subject : "";
         $this->data['email'] = ($request->email) ? $request->email : "";
         $this->data['phone'] = ($request->phone) ? $request->phone : "";
-        // $this->data['file'] = ($request->file) ? $request->file : "";
+        $this->data['file'] = ($request->file) ? $request->file : "";
     }
 
     /**
@@ -34,7 +34,9 @@ class CallBackMessage extends Mailable
      */
     public function build()
     {
-        // return $this->view('emails.callback')->attach(($this->data['file']) ? $this->data['file'] : "");
-        return $this->view('emails.callback');
+        return $this->view('emails.callback')->attach($this->data['file']);
+        // return $this->view('emails.callback')->subject('ТочноСочно заказ')->attach(
+        //     $this->data['file']
+        // );
     }
 }

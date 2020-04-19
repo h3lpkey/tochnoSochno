@@ -49,7 +49,7 @@ new Vue({
     if (window.innerWidth < 1024) {
       document.getElementById('section-head').style.height = window.innerHeight + "px";
     }
-    axios.post("https://tochnosochno.ru/getAddresses").then((response) => {
+    axios.post("getAddresses").then((response) => {
       this.addresses = response.data;
       this.currentAddress = response.data[0].address_short;
       this.address_long = response.data[0].address_long;
@@ -78,7 +78,7 @@ new Vue({
       });
       thisScope.showMap = true;
     });
-    axios.post("https://tochnosochno.ru/getProducts").then((response) => {
+    axios.post("getProducts").then((response) => {
       // get types menu
       let type = new Set();
       for (let [key, value] of Object.entries(response.data)) {
@@ -146,7 +146,7 @@ new Vue({
       return false;
     },
     setFile(event) {
-      this.emailFile = event.target.value;
+      this.emailFile = event.target.files[0];
       this.emailTextFile = event.target.files[0].name;
     },
     sendEmail() {
