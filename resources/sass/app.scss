@@ -68,6 +68,9 @@ a {
     }
   }
 }
+.btn-wrapper.disabled {
+  background: #878787;
+}
 .mobile {
   @media (max-width: $media-tablet) {
     background: linear-gradient(to right, #ff6b00, #ff0000) !important;

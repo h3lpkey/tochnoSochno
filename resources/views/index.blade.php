@@ -188,7 +188,7 @@
               @{{emailTextFile}}
               <input class="file" type="file" @change="setFile" />
             </p>
-            <div class="btn-wrapper btn-wrapper__alw" @click="sendEmail">
+            <div class="btn-wrapper btn-wrapper__alw" v-bind:class="{ 'disabled': emailSendStatus }" @click="sendEmail">
               <button v-if="!emailSendStatus">@{{emailButton}}</button>
               <button v-else>отправлено</button>
             </div>
