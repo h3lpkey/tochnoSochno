@@ -73,7 +73,9 @@
         </div>
         <div class="big-logo"><img src="images/logo.svg" alt="" /></div>
         <div class="header-btn">
-          <p>Заказать</p>
+          <a href="#section-menu">
+            <p>Заказать</p>
+          </a>
         </div>
         <div class="bottom-buttons">
           <a href="#section-contacts" class="city">

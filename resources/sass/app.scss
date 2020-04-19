@@ -29,8 +29,8 @@ body {
 a {
   text-decoration: none;
 }
-#app {
-  transition: 0.5s;
+#app-tochno {
+  overflow: hidden;
 }
 .btn-wrapper__alw {
   background: linear-gradient(to right, #ff6b00, #ff0000);
@@ -107,6 +107,14 @@ a {
   background-size: cover;
   .wrapper {
     margin: auto;
+    @media (max-width: $media-tablet) {
+      margin-top: 0;
+      margin-bottom: 0;
+      height: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
   }
   .header {
     display: flex;
@@ -247,7 +255,7 @@ a {
     margin-top: 150px;
     margin-bottom: 90px;
     @media (max-width: $media-tablet) {
-      width: 270px;
+      width: 90%;
     }
     img {
       width: 100%;
@@ -255,6 +263,7 @@ a {
   }
   .header-btn {
     max-width: 290px;
+    width: 100%;
     height: 128px;
     display: flex;
     margin: auto;
@@ -342,10 +351,9 @@ a {
       font-size: 24px;
       text-align: center;
       max-width: 170px;
-      min-width: 125px;
+      min-width: 100px;
       @media (max-width: $media-tablet) {
         font-size: 14px;
-        margin-right: 25px;
       }
       .list-item_text {
         @media (max-width: $media-tablet) {
@@ -397,18 +405,20 @@ a {
       font-size: 36px;
       cursor: pointer;
       @media (max-width: $media-tablet) {
-        width: 110px;
+        width: 100px;
         height: 50px;
         font-size: 16px;
       }
       &:hover {
         background: url(../img/btnRedBack.png) center center;
-        background-size: cover;
+        background-size: contain;
+        background-repeat: no-repeat;
       }
     }
     .item-active {
       background: url(../img/btnRedBack.png) center center;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
     .item-disabled {
       color: #878787;
@@ -663,6 +673,7 @@ a {
         margin-bottom: 40px;
         color: #ff0000;
         font-family: "Proxima";
+        text-decoration: underline;
         .file {
           position: absolute;
           opacity: 0;
@@ -829,6 +840,9 @@ a {
   }
 }
 .section-contacts {
+  @media (max-width: $media-tablet) {
+    margin-bottom: 50px;
+  }
   .wrapper {
     @media (max-width: $media-tablet) {
       margin: auto;
@@ -1003,9 +1017,10 @@ a {
         text-transform: uppercase;
         @media (max-width: $media-tablet) {
           text-align: center;
+          color: #B4B4B4;
         }
         &:hover {
-          color: #ff0000;
+          color: white;
         }
       }
     }
@@ -1063,6 +1078,7 @@ a {
         margin-top: 50px;
         @media (max-width: $media-tablet) {
           font-size: 18px;
+          margin-top: 20px;
         }
         &:hover {
           color: #ff0000;
