@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ru">
 
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/css/app.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="Description" content="Свежее мясо на углях. Выездное обслуживание.">
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=121cc8e0-79c6-4386-bf51-3c1b78a1e585" type="text/javascript"></script>
   <title>ТочноСочно</title>
   <!-- Yandex.Metrika counter -->
