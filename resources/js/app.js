@@ -41,6 +41,7 @@ new Vue({
     selectItem: "",
     typeDescription: "",
     emailSendStatus: false,
+    offerta: false,
     emailButton: "отправить заявку",
     emailTextFile: "Прикрепить документ (.pdf, .doc)",
   },
