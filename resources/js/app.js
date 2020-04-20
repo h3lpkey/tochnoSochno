@@ -149,11 +149,26 @@ new Vue({
       this.emailFile = event.target.files[0];
       this.emailTextFile = event.target.files[0].name;
     },
+    scrollTo(id) {
+      let offset = 0;
+      offset += $("#header").height();
+      offset += $("#topnav").height();
+      if (window.innerWidth < 1024) {
+        offset += 10;
+      } else {
+      }
+      $("html, body").animate(
+        {
+          scrollTop: $(id).offset().top - offset,
+        },
+        200
+      );
+    },
     sendEmail() {
-      this.emailButton = "Секундочку...";
       if (this.emailPhone.length <= 0) {
         this.errorPhone = true;
       } else {
+        this.emailButton = "Секундочку...";
         this.errorPhone = false;
         const formData = new FormData();
         formData.append("name", this.emailName);

@@ -50,19 +50,19 @@
       <div class="wrapper">
         <div class="header-replacer" v-show="replacer || showMenu"></div>
         <div class="header-background" v-show="replacer"></div>
-        <div class="header" v-bind:class="{ 'header-fixed': replacer || showMenu, 'header-opened': showMenu }" v-scroll="handleScroll">
+        <div class="header" id="header" v-bind:class="{ 'header-fixed': replacer || showMenu, 'header-opened': showMenu }" v-scroll="handleScroll">
           <div class="menu-btn" @click="showMenu = !showMenu">
             <img src="images/menu.svg" alt="">
           </div>
           <div class="logo">
             <a href="#section-head"><img src="images/logo-cirlce.svg" alt="logo" /></a>
           </div>
-          <nav class="menu" v-bind:class="{ 'menu-mobile': showMenu }">
-            <a href="#section-menu">меню</a>
-            <a href="#section-deliver">доставка</a>
-            <a href="#section-foodtrack">фудтрак</a>
-            <a href="#section-cashback">кэшбэк</a>
-            <a href="#section-contacts">контакты</a>
+          <nav class="menu" id="topnav" v-bind:class="{ 'menu-mobile': showMenu }">
+            <a href="#" @click="scrollTo('#section-menu')">меню</a>
+            <a href="#" @click="scrollTo('#section-deliver')">доставка</a>
+            <a href="#" @click="scrollTo('#section-foodtrack')">фудтрак</a>
+            <a href="#" @click="scrollTo('#section-cashback')">кэшбэк</a>
+            <a href="#" @click="scrollTo('#section-contacts')">контакты</a>
           </nav>
           <a href="https://www.instagram.com/tochnosochno/?hl=ru" class="instagram">
             <img src="images/instagram.svg" alt="" />
@@ -288,11 +288,11 @@
         <div class="footer-wrapper">
           <img class="logo-footer" src="images/logo-cirlce.svg" alt="logo" />
           <nav class="footer-menu">
-            <a href="#section-menu">Меню</a>
-            <a href="#section-deliver">Доставка</a>
-            <a href="#section-foodtrack">Фудтрак</a>
-            <a href="#section-cashback">Кэшбэк</a>
-            <a href="#section-contacts">Контакты</a>
+            <a href="#" @click="scrollTo('#section-menu')">Меню</a>
+            <a href="#" @click="scrollTo('#section-deliver')">Доставка</a>
+            <a href="#" @click="scrollTo('#section-foodtrack')">Фудтрак</a>
+            <a href="#" @click="scrollTo('#section-cashback')">Кэшбэк</a>
+            <a href="#" @click="scrollTo('#section-contacts')">Контакты</a>
           </nav>
           <nav class="footer-links">
             <a href="mailto:tochnosochno@mail.ru">tochnosochno@mail.ru</a>

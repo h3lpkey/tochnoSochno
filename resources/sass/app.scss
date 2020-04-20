@@ -968,7 +968,7 @@ a {
         }
       }
       .time-text {
-        color: #878787;
+        color: white;
         font-size: 28px;
         line-height: 40px;
         margin: 0;
@@ -977,7 +977,7 @@ a {
         }
       }
       .time-title {
-        color: white;
+        color: red;
         font-size: 28px;
         line-height: 40px;
         margin: 0;
@@ -1090,6 +1090,9 @@ a {
         }
         img {
           transform: rotate(180deg);
+          @media (max-width: $media-tablet) {
+            width: 50px;
+          }
         }
       }
       .fixed-scroll {
@@ -1100,7 +1103,7 @@ a {
           opacity: 1;
         }
         @media (max-width: $media-tablet) {
-          display: none;
+          top: unset;
         }
       }
       .footer-phone {
