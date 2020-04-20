@@ -40,6 +40,9 @@ a {
 }
 .btn-wrapper__out {
   background: url(../img/btn-gradient__out.svg) no-repeat;
+  @media (max-width: 500px) {
+    background: url(../img/btn-gradient__out-300.svg) no-repeat;
+  }
   &:hover {
     background: url(../img/btn-gradient__fill.svg) no-repeat;
   }
@@ -447,7 +450,7 @@ a {
     position: relative;
     height: 500px;
     @media (max-width: $media-tablet) {
-      margin-bottom: 200px;
+      margin-bottom: 20px;
     }
     .menu-background {
       padding: 2px;
@@ -584,12 +587,15 @@ a {
   background-size: cover;
   @media (max-width: $media-tablet) {
     position: relative;
-    height: 0;
   }
   .deliver-wrapper {
     max-width: 730px;
     margin-top: 175px;
     margin-bottom: 100px;
+    @media (max-width: $media-tablet) {
+      margin: 40px auto;
+      text-align: center;
+    }
     .title {
       font-size: 96px;
       color: white;
@@ -602,6 +608,9 @@ a {
       font-size: 28px;
       line-height: 40px;
       color: white;
+      @media (max-width: $media-tablet) {
+        text-align: center;
+      }
     }
   }
   .deliver-buttons {
@@ -609,18 +618,19 @@ a {
     justify-content: space-between;
     margin-top: 85px;
     @media (max-width: $media-tablet) {
-      position: absolute;
-      top: -200px;
       margin-top: 0;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .btn-wrapper {
       width: 350px;
       height: 66px;
       @media (max-width: $media-tablet) {
-        width: 100%;
         margin-bottom: 25px;
         margin-right: 20px;
+      }
+      @media (max-width: 500px) {
+        width: 300px;
       }
     }
   }
@@ -947,7 +957,7 @@ a {
         }
       }
       .address {
-        color: #878787;
+        color: white;
         font-size: 28px;
         line-height: 40px;
         margin-top: 150px;

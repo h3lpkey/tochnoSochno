@@ -156,12 +156,12 @@
             Быстрые ребята из «Яндекс.Еды» и «DeliveryClub» доставят наши вкусные блюда и освежающие напитки к тебе домой или на работу
           </p>
           <div class="deliver-buttons">
-            <div class="btn-wrapper btn-wrapper__out mobile">
+            <div class="btn-wrapper btn-wrapper__out">
               <a href="https://eda.yandex/restaurant/tochno_sochnor_8_marta_145">
                 <button>яндекс еда</button>
               </a>
             </div>
-            <div class="btn-wrapper btn-wrapper__out mobile">
+            <div class="btn-wrapper btn-wrapper__out">
               <button>delivery club</button>
             </div>
           </div>
