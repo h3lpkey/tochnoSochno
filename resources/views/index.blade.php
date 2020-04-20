@@ -252,9 +252,10 @@
             новостями и специальными предложениями от Точно Сочно.</div>
         </div>
         <div class="btn-wrapper btn-wrapper__alw" v-bind:class="{ 'disabled': !offerta }">
-          <a href="https://form.cardpr.com/bff51319-7478-41f5-a4fb-1d0b163cc130">
+          <a v-if="offerta" href="https://form.cardpr.com/bff51319-7478-41f5-a4fb-1d0b163cc130">
             <button>отправить заявку</button>
           </a>
+          <button v-else>отправить заявку</button>
         </div>
         <div class="img-wrapper"><img src="images/cash-card.png" alt="" /></div>
       </div>
