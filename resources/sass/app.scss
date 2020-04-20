@@ -578,7 +578,7 @@ a {
     margin-top: 50px;
     margin-bottom: 50px;
     @media (max-width: $media-tablet) {
-      display: none;
+      width: unset;
     }
   }
 }
