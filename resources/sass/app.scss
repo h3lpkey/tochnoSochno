@@ -585,7 +585,9 @@ a {
 }
 .section-deliver {
   background: url(../img/background_deliver.jpg) no-repeat center center;
-  background-size: cover;
+  background-size: contain;
+  background-position-x: right;
+  background-color: #000000;
   @media (max-width: $media-tablet) {
     position: relative;
   }
@@ -827,6 +829,7 @@ a {
             background-position-y: -24px;
             background-position-x: -25px;
             background-size: 300%;
+            margin-right: 25px;
             margin-right: 25px;
             width: 25px;
             height: 25px;
