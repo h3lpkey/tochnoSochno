@@ -157,6 +157,7 @@ new Vue({
       if (window.innerWidth < 1024) {
         offset += 10;
       } else {
+        offset += -22;
       }
       $("html, body").animate(
         {
