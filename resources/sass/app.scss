@@ -638,7 +638,7 @@ a {
   }
 }
 .section-foodtrack {
-  background: url(../img/background_foodtrack.jpg) no-repeat center center;
+  background-image: url(../img/background_foodtrack.jpg);
   background-size: cover;
   color: white;
   @media (max-width: $media-tablet) {
@@ -771,7 +771,7 @@ a {
           position: absolute;
           top: 31px;
           left: 7px;
-          box-shadow: 0px 0px 30px 10px #ff0000;
+          box-shadow: 0px 0px 30px 10px #ff00007a;
           @media (max-width: $media-tablet) {
             display: none;
           }
@@ -838,7 +838,7 @@ a {
             position: absolute;
             top: 12px;
             left: 11px;
-            box-shadow: 0px 0px 30px 10px #ff0000;
+            box-shadow: 0px 0px 30px 10px #ff00007a;
           }
         }
       }
