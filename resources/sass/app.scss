@@ -24,7 +24,11 @@ html {
 body {
   background: #060606;
   font-family: "Marvin";
+  font-weight: 500!important;
   overflow-x: hidden;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: 500!important;
 }
 a {
   text-decoration: none;
@@ -109,6 +113,9 @@ a {
   flex-direction: column;
   background: url(../img/background_header.jpg) no-repeat center center;
   background-size: cover;
+  @media (max-width: $media-tablet) {
+    background-position-x: right;
+  }
   .wrapper {
     margin: auto;
     @media (max-width: $media-tablet) {
@@ -261,6 +268,7 @@ a {
     margin-bottom: 90px;
     @media (max-width: $media-tablet) {
       width: 90%;
+      margin-top: 90px;
     }
     img {
       width: 100%;
