@@ -34,12 +34,16 @@ class SendFormFromWebsite extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.callback')->subject('Точно Сочно')->attach(
-            $this->data['file']->getRealPath(),
-            [
-                'as' => $this->data['file']->getClientOriginalName(),
-                'mime' => $this->data['file']->getClientMimeType(),
-            ]
-        );;
+        if ($this->data['file']) {
+            return $this->view('emails.callback')->subject('Точно Сочно')->attach(
+                $this->data['file']->getRealPath(),
+                [
+                    'as' => $this->data['file']->getClientOriginalName(),
+                    'mime' => $this->data['file']->getClientMimeType(),
+                ]
+            );
+        } else {
+            return $this->view('emails.callback')->subject('Точно Сочно');
+        }
     }
 }

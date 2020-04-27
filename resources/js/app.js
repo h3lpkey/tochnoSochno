@@ -180,19 +180,19 @@ new Vue({
         formData.append("file", this.emailFile);
 
         if (!this.emailSendStatus) {
-          axios({
-            method: "post",
-            url: "callback",
-            data: formData,
-            headers: { "Content-Type": "multipart/form-data" },
-          })
-            .then((response) => {
-              if (response.status == 200) {
-                this.emailSendStatus = true;
-              }
+            axios({
+              method: "post",
+              url: "callback",
+              data: formData,
+              headers: { "Content-Type": "multipart/form-data" },
             })
-            .catch(function (response) {});
-        }
+              .then((response) => {
+                if (response.status == 200) {
+                  this.emailSendStatus = true;
+                }
+              })
+              .catch(function (response) {});
+          }
       }
     },
     setDescriptionType(type) {
