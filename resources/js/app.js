@@ -106,13 +106,11 @@ new Vue({
           items: 4,
           margin: 10,
           dots: false,
-          nav: false,
           responsiveClass: true,
           stagePadding: 50,
           responsive: {
             0: {
               items: 1,
-              nav: true,
             },
             600: {
               items: 2,
@@ -180,19 +178,19 @@ new Vue({
         formData.append("file", this.emailFile);
 
         if (!this.emailSendStatus) {
-            axios({
-              method: "post",
-              url: "callback",
-              data: formData,
-              headers: { "Content-Type": "multipart/form-data" },
+          axios({
+            method: "post",
+            url: "callback",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+          })
+            .then((response) => {
+              if (response.status == 200) {
+                this.emailSendStatus = true;
+              }
             })
-              .then((response) => {
-                if (response.status == 200) {
-                  this.emailSendStatus = true;
-                }
-              })
-              .catch(function (response) {});
-          }
+            .catch(function (response) {});
+        }
       }
     },
     setDescriptionType(type) {

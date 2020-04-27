@@ -528,6 +528,7 @@ a {
       width: 100%;
       margin: 0;
       z-index: 1000;
+      display: block!important;
       .owl-prev {
         background-color: transparent;
         left: 0;
@@ -549,9 +550,6 @@ a {
           background-image: url("../img/bottom_btn.svg");
           background-repeat: no-repeat;
         }
-      }
-      .owl-prev.disabled {
-        display: none;
       }
       .owl-next {
         background-color: transparent;
@@ -575,9 +573,6 @@ a {
           background-image: url("../img/bottom_btn.svg");
           background-repeat: no-repeat;
         }
-      }
-      .owl-next.disabled {
-        display: none;
       }
     }
     .owl-item {
