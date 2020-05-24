@@ -162,7 +162,9 @@
               </a>
             </div>
             <div class="btn-wrapper btn-wrapper__out">
-              <button>delivery club</button>
+              <a href="https://www.delivery-club.ru/srv/TochnoSochno_ekb">
+                <button>delivery club</button>
+              </a>
             </div>
           </div>
         </div>
@@ -246,9 +248,9 @@
             </div>
           </ul>
         </div>
-        <div class="offer" @click="offerta = !offerta">
-          <div class="checkmark" v-bind:class="{'checkmark-true' : !offerta }"></div>
-          <div class="checkbox-text"> Я согласен с Публичной офертой и не против получать сообщения с
+        <div class="offer">
+          <div class="checkmark" @click="offerta = !offerta" v-bind:class="{'checkmark-true' : !offerta }"></div>
+          <div class="checkbox-text"> Я согласен с <a class="oferta" href="oferta.docx">Публичной офертой</a> и не против получать сообщения с
             новостями и специальными предложениями от Точно Сочно.</div>
         </div>
         <div class="btn-wrapper btn-wrapper__alw" v-bind:class="{ 'disabled': !offerta }">
